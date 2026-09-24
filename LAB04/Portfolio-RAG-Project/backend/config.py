@@ -1,9 +1,12 @@
 import os
 import sys
+from dotenv import load_dotenv
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8")
+
+load_dotenv()
 
 class Config:
     # --- Feature Toggles ---
@@ -51,10 +54,7 @@ class Config:
     MULTI_QUERY_COUNT = 3
 
     # --- LLM ---
-    # We set the environment variable directly for compatibility with existing scripts,
-    # but normally it should be loaded from .env
-    os.environ["GROQ_API_KEY"] = "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"
-    GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+    GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 
     LLM_PROVIDER = "groq"
     LLM_MODEL = "openai/gpt-oss-120b"
