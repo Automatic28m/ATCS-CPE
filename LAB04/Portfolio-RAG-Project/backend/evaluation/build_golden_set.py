@@ -27,7 +27,7 @@ import json
 import random
 import re
 
-import config
+from config import config
 
 # ตรงข้ามกับ SLANG_MAP ใน query_transform: ศัพท์แพทย์ → ที่คนพูดกันจริง
 TO_SLANG = {

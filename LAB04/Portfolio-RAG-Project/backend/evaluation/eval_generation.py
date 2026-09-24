@@ -23,7 +23,7 @@
 import json
 import re
 
-import config
+from config import config
 from evaluation.eval_retrieval import load_golden_set
 from src.hybrid_retriever import tokenize
 from src.prompt_templates import format_context
