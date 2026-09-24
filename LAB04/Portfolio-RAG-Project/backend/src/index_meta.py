@@ -12,7 +12,7 @@
 import json
 import os
 
-import config
+from config import config
 
 # ค่าตั้งที่ถ้าเปลี่ยนแล้ว index เดิมใช้ไม่ได้ ต้อง build ใหม่
 TRACKED_SETTINGS = ["CHUNK_SIZE", "CHUNK_OVERLAP", "EMBEDDING_MODEL_NAME"]

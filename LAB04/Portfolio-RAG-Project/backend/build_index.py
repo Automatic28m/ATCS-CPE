@@ -10,7 +10,7 @@ import time
 
 import numpy as np
 
-import config
+from config import config
 from src import index_meta
 from src.document_loader import load_qa_file
 from src.embedding_model import EmbeddingModel

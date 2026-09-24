@@ -6,7 +6,7 @@
 
 from sentence_transformers import SentenceTransformer
 
-import config
+from config import config
 
 
 class EmbeddingModel:

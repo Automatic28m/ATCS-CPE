@@ -24,7 +24,7 @@ import json
 import os
 import time
 
-import config
+from config import config
 from evaluation.metrics import average, evaluate_one, print_table
 
 # จำนวนข้อที่จะทดสอบ (None = ทั้งหมด) — ลดลงถ้าอยากให้เร็ว

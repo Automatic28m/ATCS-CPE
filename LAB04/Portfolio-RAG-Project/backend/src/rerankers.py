@@ -16,7 +16,7 @@
 
 from sentence_transformers import CrossEncoder
 
-import config
+from config import config
 
 
 class Reranker:

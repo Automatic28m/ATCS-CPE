@@ -13,7 +13,7 @@
 #     print(chunk["score"], chunk["question"])
 
 
-import config
+from config import config
 from src.embedding_model import EmbeddingModel
 from src.vector_store import VectorStore, load_chunk_store
 

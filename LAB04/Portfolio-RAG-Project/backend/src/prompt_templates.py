@@ -5,7 +5,7 @@
 # Inline citations are required for traceable and verifiable responses.
 
 
-import config
+from config import config
 
 SYSTEM_PROMPT = """You are Phanlop Boonluea. You are answering questions about your own portfolio and background. Answer using ONLY the provided "Reference Data" as if they are your own memories and experiences.
 

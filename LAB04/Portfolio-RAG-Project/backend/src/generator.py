@@ -1,112 +1,47 @@
-
-
-
-# generator.py
-# Generate answers with an LLM from retrieved documents.
-# Disable USE_LLM to return retrieved text only.
-
 import os
-import re
-
 from openai import OpenAI
-
-import config
-from src.prompt_templates import build_messages
-
-
-class LLM:
-    """เรียก LLM ผ่านไลบรารี openai (ใช้ได้ทั้ง ollama / openai / gemini)"""
-
-    def __init__(self):
-        base_url, default_model, key_name = config.LLM_PROVIDERS[config.LLM_PROVIDER]
-
-        self.model = config.LLM_MODEL or default_model
-
-        # Ollama ไม่ต้องใช้ key 
-        api_key = os.getenv(key_name) if key_name else "ollama-no-key"
-
-        self.client = OpenAI(base_url=base_url, api_key=api_key)
-        #print(f"[llm] use {config.LLM_PROVIDER} · model {self.model}")
-
-    def chat(self, messages):
-        #แล้วคืนคำตอบเป็น string
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=messages,
-            temperature=config.LLM_TEMPERATURE,
-            max_tokens=config.LLM_MAX_TOKENS,
-        )
-        return response.choices[0].message.content.strip()
-
-
-class NoLLM:
-
-    model = "don't use LLM"
-
-    def chat(self, messages):
-        user_message = messages[-1]["content"]
-
-        # ดึงเนื้อหาทั้งหมดออกจาก prompt
-        parts = user_message.split("ข้อมูลอ้างอิง:")
-        if len(parts) < 2:
-            return config.NO_CONTEXT_MESSAGE
-
-        context = parts[1].split("คำถามของผู้ใช้:")[0].strip()
-        
-        return context if context else config.NO_CONTEXT_MESSAGE
-
-
-def get_llm():
-    if not config.USE_LLM:
-        return NoLLM()
-
-    try:
-        return LLM()
-    except Exception as error:
-        print(f"[llm] Failed to use {config.LLM_PROVIDER}: {error}")
-        print("[llm] Falling back to retrieved text only.")
-        return NoLLM()
-
+from config import config
 
 class Generator:
-    def __init__(self, llm):
-        self.llm = llm
+    def __init__(self):
+        base_url, default_model, key_name = config.LLM_PROVIDERS[config.LLM_PROVIDER]
+        self.model = config.LLM_MODEL or default_model
+        
+        # Load API Key
+        api_key = os.getenv(key_name) if key_name else "ollama-no-key"
+        self.client = OpenAI(base_url=base_url, api_key=api_key)
 
-    def generate(self, question, chunks, history=""):
+    def generate(self, query, context_chunks, chat_history=None):
+        if not config.USE_LLM:
+            return "DEBUG MODE (LLM OFF):\n\n" + "\n\n".join([f"[{c.get('metadata', {}).get('situation', 'Source')}] {c.get('text', c.get('answer', ''))}" for c in context_chunks])
 
-        # ค้นไม่เจออะไรเลย — ตอบว่าไม่รู้ ดีกว่าให้ LLM เดา
-        if not chunks:
-            return {
-                "answer": config.NO_CONTEXT_MESSAGE,
-                "sources": [],
-                "no_context": True,
-            }
-
-        messages = build_messages(question, chunks, history)
+        # Build context string from retrieved chunks
+        context_str = "\n\n".join([f"Source [{i+1}]: {c.get('text', c.get('answer', ''))}" for i, c in enumerate(context_chunks)])
+        system_prompt = config.SYSTEM_PROMPT.replace("{context}", context_str)
+        
+        messages = [{"role": "system", "content": system_prompt}]
+        
+        if chat_history:
+            recent_history = chat_history[-6:]
+            for msg in recent_history:
+                # Ensure correct role names for OpenAI spec
+                role = "assistant" if msg["role"] == "ai" else msg["role"]
+                messages.append({"role": role, "content": msg["content"]})
+        else:
+            messages.append({"role": "user", "content": query})
 
         try:
-            answer = self.llm.chat(messages)
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=messages,
+                temperature=config.LLM_TEMPERATURE,
+                max_tokens=config.LLM_MAX_TOKENS,
+            )
+            return response.choices[0].message.content.strip()
         except Exception as error:
-            print(f"[llm] Generation Failed ({error}) — Returning raw chunks instead.")
-            answer = "\n\n".join([f"[{i+1}] {c.get('answer', c.get('text', ''))}" for i, c in enumerate(chunks)])
+            print(f"[Generator] Generation Failed ({error}) — Returning raw chunks instead.")
+            return "\n\n".join([f"[{i+1}] {c.get('text', c.get('answer', ''))}" for i, c in enumerate(context_chunks)])
 
-        if config.DISCLAIMER not in answer:
-            answer = f"{answer}\n\n{config.DISCLAIMER}"
-
-        return {
-            "answer": answer.strip(),
-            "sources": self.build_sources(chunks),
-            "no_context": False,
-        }
-
-    def build_sources(self, chunks):    #  สร้างรายการแหล่งอ้างอิง ให้เลข [1] [2] ตรงกับที่อยู่ใน prompt
-        sources = []
-        for number, chunk in enumerate(chunks, start=1):
-            sources.append({
-                "n": number,
-                "chunk_id": chunk["chunk_id"],
-                "question": chunk["question"],
-                "line_no": chunk["line_no"],
-                "score": round(float(chunk["score"]), 4),
-            })
-        return sources
+# Helper to maintain compatibility if anything imports get_llm
+def get_llm():
+    return Generator()

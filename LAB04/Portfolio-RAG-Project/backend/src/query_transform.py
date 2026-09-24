@@ -1,44 +1,35 @@
-# query_transform.py
-# Improve user queries before retrieval.
-#
-# Problem
-# Retrieval quality depends on the user's query. Real users often write
-# short or ambiguous questions, or use slang.
-#
-#     "I have a sore on my private part"   ← slang
-#     Knowledge base: "penis"
-#
-#     "So what's the difference?"          ← unclear without context
-#
-# Since the knowledge base uses medical terms, query transformation helps
-# bridge the gap between user language and stored documents.
-#
-# Two levels are available:
-#
-# Level 1 — normalize_query()
-#     No AI required. Replaces slang using a lookup table.
-#     Fast, free, and always enabled.
-#
-# Level 2 — transform()
-#     Uses an LLM when config.USE_QUERY_TRANSFORM is enabled.
-#
-#     rewrite
-#         Rewrite the query into a clearer question.
-#
-#     multi_query
-#         Generate multiple equivalent queries and search all of them.
-#
-#     hyde
-#         Generate a hypothetical answer and use it as the search query.
-#         This works because answer-like text is often closer to the
-#         correct document than the original question.
-
 import re
+import os
+from openai import OpenAI
+from config import config
 
-import config
-from src.prompt_templates import HYDE_PROMPT, MULTI_QUERY_PROMPT, REWRITE_PROMPT
+# Prompts for Query Transformation
+REWRITE_PROMPT = """Rewrite the question to be clear and suitable for searching the portfolio database.
+- Correct any spelling mistakes.
+- If it is a follow-up question, add context from the previous conversation so it is self-contained.
+- Output only a single-line search query, with no explanations.
 
-# ตารางแทนคำแสลง — เพิ่มคำได้ตามต้องการ ไม่ต้องแก้โค้ดส่วนอื่น
+{history}Original Question: {question}
+
+Rewritten Query:"""
+
+MULTI_QUERY_PROMPT = """Generate {n} different versions of the given question to broaden the search coverage.
+- Use different phrasing and keywords.
+- The meaning must remain the same as the original question.
+- Output 1 question per line, without numbering.
+
+Original Question: {question}
+
+Generated Questions:"""
+
+HYDE_PROMPT = """Write a "hypothetical answer" to this question in the style of a portfolio/resume document.
+- Keep it 3-5 sentences long and use relevant professional keywords.
+- Don't worry if the facts are incorrect, as this will only be used for search retrieval.
+
+Question: {question}
+
+Hypothetical Answer:"""
+
 SLANG_MAP = {
     "Uni": "University",
     "BSc": "Bachelor's Degree",
@@ -51,72 +42,57 @@ SLANG_MAP = {
     "Repo": "Repository"
 }
 
-# คำลงท้ายที่ไม่ช่วยในการค้นหา
 ENDING_WORDS = re.compile(r"\s*(please|thanks|thank you|anyway)\s*$", re.IGNORECASE)
 
-
 def normalize_query(query):
-    """
-    ปรับคำถามแบบไม่ใช้ AI — เร็วและฟรี
-
-        "เป็นแผลที่น้องชายครับ"  →  "เป็นแผลที่อวัยวะเพศชาย"
-    """
-    text = re.sub(r"\s+", " ", query).strip()       # ตัดช่องว่างซ้ำซ้อน
-
+    text = re.sub(r"\s+", " ", query).strip()
     for slang, formal in SLANG_MAP.items():
         text = text.replace(slang, formal)
-
     text = ENDING_WORDS.sub("", text)
-    return text.strip() or query.strip()            # ถ้าตัดจนหมด ใช้ของเดิม
-
+    return text.strip() or query.strip()
 
 def clean_line(line):
-    """ตัดเลขข้อ เครื่องหมายคำพูด และคำนำหน้า ที่ LLM ชอบใส่มาให้"""
     text = line.strip()
-    text = re.sub(r"^\s*(\d+[\.\)]|[-*•])\s*", "", text)    # "1. " หรือ "- "
+    text = re.sub(r"^\s*(\d+[\.\)]|[-*•])\s*", "", text)
     text = re.sub(r"^(คำถาม|คำค้นหา|Query)\s*[:：]\s*", "", text)
     return text.strip().strip('"').strip("'")
 
-
 class QueryTransformer:
-    def __init__(self, llm):
-        self.llm = llm
+    def __init__(self, llm_placeholder=None):
+        base_url, default_model, key_name = config.LLM_PROVIDERS[config.LLM_PROVIDER]
+        self.model = config.LLM_MODEL or default_model
+        api_key = os.getenv(key_name) if key_name else "ollama-no-key"
+        self.client = OpenAI(base_url=base_url, api_key=api_key)
 
     def ask_llm(self, prompt):
-        return self.llm.chat([{"role": "user", "content": prompt}])
+        response = self.client.chat.completions.create(
+            model=self.model,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=config.LLM_TEMPERATURE,
+            max_tokens=200,
+        )
+        return response.choices[0].message.content.strip()
 
     def rewrite(self, query, history):
-        """ให้ LLM เขียนคำถามใหม่ให้ชัดเจนและสมบูรณ์ในตัวเอง"""
-        history_block = f"บทสนทนาก่อนหน้า:\n{history}\n\n" if history else ""
+        history_block = f"Previous conversation:\n{history}\n\n" if history else ""
         prompt = REWRITE_PROMPT.format(history=history_block, question=query)
         return [clean_line(self.ask_llm(prompt))]
 
     def multi_query(self, query):
-        """ให้ LLM แต่งคำถามที่ความหมายเดียวกันหลายแบบ"""
         prompt = MULTI_QUERY_PROMPT.format(n=config.MULTI_QUERY_COUNT, question=query)
         answer = self.ask_llm(prompt)
-
-        queries = [normalize_query(query)]           # เก็บคำถามเดิมไว้เป็นตัวแรก
+        queries = [normalize_query(query)]
         for line in answer.splitlines():
             new_query = clean_line(line)
             if new_query and new_query not in queries:
                 queries.append(new_query)
-
         return queries[: config.MULTI_QUERY_COUNT + 1]
 
     def hyde(self, query):
-        """ให้ LLM แต่งคำตอบสมมติ แล้วใช้คำตอบนั้นเป็นคำค้นด้วย"""
         fake_answer = self.ask_llm(HYDE_PROMPT.format(question=query)).strip()
-
-        # เก็บคำถามเดิมไว้ด้วย เผื่อคำตอบสมมติหลุดประเด็น
         return [normalize_query(query), fake_answer]
 
     def transform(self, query, history=""):
-        """
-        คืน list ของคำถามที่จะเอาไปค้น — อย่างน้อย 1 ข้อเสมอ
-
-        ถ้า LLM ใช้ไม่ได้ จะคืนคำถามเดิม การค้นหาจึงไม่พังเพราะขั้นนี้
-        """
         if not config.USE_QUERY_TRANSFORM:
             return [normalize_query(query)]
 
@@ -126,9 +102,6 @@ class QueryTransformer:
             if config.QUERY_TRANSFORM_MODE == "hyde":
                 return self.hyde(query)
             return self.multi_query(query)
-
         except Exception as error:
-            print(f"[query_transform] ล้มเหลว ({error}) — ใช้คำถามเดิม")
+            print(f"[query_transform] Failed ({error}) — Using original query")
             return [normalize_query(query)]
-
-

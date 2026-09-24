@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import uvicorn
 
-import config
+from config import config
 from src import index_meta
 from src.rag_pipeline import RAGPipeline
 

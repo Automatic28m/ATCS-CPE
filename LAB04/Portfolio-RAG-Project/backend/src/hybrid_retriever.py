@@ -14,7 +14,7 @@ import re
 
 from rank_bm25 import BM25Okapi
 
-import config
+from config import config
 from src.embedding_model import EmbeddingModel
 from src.vector_store import VectorStore, load_chunk_store
 
