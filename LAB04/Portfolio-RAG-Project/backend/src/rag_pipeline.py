@@ -1,97 +1,88 @@
-
-
-
-
-
-
-# Connect all RAG components into a single pipeline.
-#
-# User Query
-#   → query_transform   Improve the query before retrieval      (config.USE_QUERY_TRANSFORM)
-#   → hybrid_retriever  Combine BM25 and dense retrieval        (config.USE_HYBRID)
-#   → rerankers         Re-rank the retrieved results           (config.USE_RERANK)
-#   → generator         Generate an answer with citations       (config.USE_LLM)
-#   → memory            Store conversation history              (config.USE_MEMORY)
-#
-# Each stage can be enabled or disabled in config.py.
-# Makes it easy to compare different RAG configurations.
-#
-# Usage:
-#   rag = RAGPipeline()
-#   print(rag.ask("What should I do if a condom breaks?")["answer"])
-
 import time
-
-import config
-from src.generator import Generator, get_llm
+from config import config
+from src.embedding_model import EmbeddingModel
 from src.hybrid_retriever import HybridRetriever
-from src.memory import ConversationMemory
-from src.query_transform import QueryTransformer
 from src.rerankers import get_reranker
-
+from src.generator import Generator
+from src.query_transform import QueryTransformer
+from src.memory import global_memory
 
 class RAGPipeline:
     def __init__(self):
-        llm = get_llm()
-
+        print("Initializing Portfolio RAG Pipeline components...")
         self.retriever = HybridRetriever(reranker=get_reranker())
-        self.transformer = QueryTransformer(llm)
-        self.generator = Generator(llm)
-        self.memory = ConversationMemory()
+        
+        # We pass the OpenAI client wrapper to QueryTransformer if needed, or instantiate it
+        # Actually Portfolio's QueryTransformer expects an LLM instance. 
+        # I'll modify QueryTransformer slightly if needed, or just pass a basic LLM wrapper.
+        from src.generator import get_llm
+        self.transformer = QueryTransformer(get_llm()) 
+        
+        self.generator = Generator()
+        print("RAG Pipeline is online and ready!")
 
-    def ask(self, query, top_k=config.TOP_K):
-        """
-        ถาม 1 คำถาม คืน dict ที่มี answer, sources, retrieved, timings
-
-        อ่านโค้ดในนี้จากบนลงล่าง จะเห็นลำดับการทำงานทั้งหมดของ RAG
-        """
+    def ask(self, query: str, chat_history=None):
         start_time = time.time()
+        
+        # ── MEMORY: load conversation history ───────────────────────────────
+        if config.USE_MEMORY:
+            chat_history = global_memory.get_history()
 
-        # ---- ขั้นที่ 1: ปรับคำถาม ----
-        history = self.memory.get_context() if config.USE_MEMORY else ""
-
-        # ส่งประวัติให้ตัวปรับคำถาม เฉพาะตอนที่เป็นคำถามต่อเนื่อง
-        transform_history = history if self.memory.is_followup(query) else ""
-        queries = self.transformer.transform(query, transform_history)
+        # ── QUERY REFORMULATION: make standalone if needed ──────────────────
+        if config.USE_QUERY_TRANSFORM:
+            # Send history to query transformer only if it's a followup
+            transform_history = chat_history if chat_history else ""
+            queries = self.transformer.transform(query, transform_history)
+            standalone_query = queries[0]
+            print(f"[Reformulation] '{query}' → '{standalone_query}'")
+        else:
+            standalone_query = query
+            queries = [query]
+        
         time_after_transform = time.time()
 
-        # ---- ขั้นที่ 2: ค้นหา (+ rerank ถ้าเปิดใช้) ----
+        # ── RAG RETRIEVAL ───────────────────────────────────────────────────
+        print(f"[Pipeline] Activating RAG retrieval.")
         chunks = self.retriever.retrieve(
-            queries[0],
-            top_k=top_k,
-            extra_queries=queries[1:],
+            standalone_query,
+            top_k=config.TOP_K,
+            extra_queries=queries[1:] if len(queries) > 1 else None,
         )
         time_after_retrieve = time.time()
 
-        # ---- ขั้นที่ 3: เขียนคำตอบ ----
-        result = self.generator.generate(query, chunks, history)
+        # ── GENERATE: send chunks + history to LLM ──────────────────────────
+        if config.USE_MEMORY:
+            full_history = global_memory.get_history() + [{"role": "user", "content": query}]
+        else:
+            full_history = chat_history if chat_history else [{"role": "user", "content": query}]
+
+        # generator now handles the direct system prompt replacement 
+        answer = self.generator.generate(query, chunks, full_history)
         time_after_generate = time.time()
 
-        # ---- ขั้นที่ 4: จำไว้ใช้รอบหน้า ----
+        # ── MEMORY: save exchange ────────────────────────────────────────────
         if config.USE_MEMORY:
-            self.memory.add_user(query)
-            self.memory.add_assistant(result["answer"])
+            global_memory.add_user_message(query)
+            global_memory.add_ai_message(answer)
 
-        result["queries_used"] = queries
-        result["retrieved"] = chunks
-        result["timings"] = {
-            "ปรับคำถาม": round(time_after_transform - start_time, 2),
-            "ค้นหา": round(time_after_retrieve - time_after_transform, 2),
-            "เขียนคำตอบ": round(time_after_generate - time_after_retrieve, 2),
-            "รวม": round(time_after_generate - start_time, 2),
+        # ── FORMAT RESULT ───────────────────────────────────────────────────
+        result = {
+            "answer": answer,
+            "queries_used": queries,
+            "retrieved": chunks,
+            "timings": {
+                "transform": round(time_after_transform - start_time, 2),
+                "retrieve": round(time_after_retrieve - time_after_transform, 2),
+                "generate": round(time_after_generate - time_after_retrieve, 2),
+                "total": round(time_after_generate - start_time, 2),
+            }
         }
         return result
 
-    def search_only(self, query, top_k=config.TOP_K):
-        """ค้นอย่างเดียว ไม่เขียนคำตอบ — ใช้ตอนวัดผลการค้นหา"""
-        queries = self.transformer.transform(query)
-        return self.retriever.retrieve(queries[0], top_k, extra_queries=queries[1:])
-
     def reset(self):
-        self.memory.clear()
+        global_memory.clear()
 
     def show_settings(self):
-        """พิมพ์ว่าตอนนี้เปิดขั้นตอนไหนอยู่บ้าง"""
         settings = [
             ("Hybrid search BM25 + dense", config.USE_HYBRID),
             ("Reranking", config.USE_RERANK),
