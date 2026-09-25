@@ -12,7 +12,7 @@ import sys
 # Add the project root ahead of other entries so local imports win when run directly.
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-import config
+from config import config
 from src.document_loader import load_qa_file
 
 

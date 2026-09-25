@@ -56,6 +56,12 @@ def ask_question(req: QueryRequest):
         "timings": result.get("timings", {})
     }
 
+@app.post("/reset")
+def reset_memory():
+    if rag_pipeline:
+        rag_pipeline.reset()
+    return {"status": "ok", "message": "Memory cleared."}
+
 @app.get("/health")
 def health_check():
     return {"status": "ok", "rag_initialized": rag_pipeline is not None}

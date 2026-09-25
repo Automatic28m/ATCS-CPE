@@ -3,11 +3,11 @@ import os
 import sys
 import time
 
-# Add the project root so imports like `src.generator` work when running this file directly.
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Ensure backend/ is the first path to resolve imports properly
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-import config
-from src.generator import LLM
+from config import config
+from openai import OpenAI
 
 
 def format_fallback_entry(item):
@@ -59,11 +59,14 @@ def main():
     print(f"Found {len(portfolio_items)} items to translate.")
 
     try:
-        llm = LLM()
-        print(f"Initialized LLM ({config.LLM_PROVIDER}: {llm.model})")
+        base_url, default_model, key_name = config.LLM_PROVIDERS[config.LLM_PROVIDER]
+        api_key = os.environ.get(key_name, "ollama-no-key")
+        client = OpenAI(base_url=base_url, api_key=api_key)
+        model_name = config.LLM_MODEL or default_model
+        print(f"Initialized OpenAI client ({config.LLM_PROVIDER}: {model_name})")
     except Exception as e:
         print(f"Failed to initialize LLM: {e}")
-        llm = None
+        client = None
 
     system_prompt = (
         "You are a helpful translation assistant. I will provide you with a JSON object representing "
@@ -89,13 +92,18 @@ def main():
         prompt = f"Please translate and format the following JSON entry:\n{item_json_str}"
 
         response = ""
-        if llm is not None:
+        if client is not None:
             messages = [
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": prompt},
             ]
             try:
-                response = llm.chat(messages).strip()
+                chat_response = client.chat.completions.create(
+                    model=model_name,
+                    messages=messages,
+                    temperature=0.2,
+                )
+                response = chat_response.choices[0].message.content.strip()
             except Exception as e:
                 print(f"Error processing item {idx}: {e}")
 

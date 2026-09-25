@@ -25,6 +25,17 @@ export default function Chat() {
     e.preventDefault();
     if (!input.trim() || isLoading) return;
 
+    if (input.trim() === "/clear") {
+      setMessages([{ role: "assistant", content: "👋 Hello! I am Phanlop Boonluea. I'm excited to share my portfolio and experience with you. Feel free to ask me anything!" }]);
+      setInput("");
+      try {
+        await fetch("http://localhost:8000/reset", { method: "POST" });
+      } catch (e) {
+        console.error("Failed to reset backend memory", e);
+      }
+      return;
+    }
+
     const userMessage = { role: "user", content: input.trim() };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
@@ -64,13 +75,25 @@ export default function Chat() {
 
   return (
     <div className="flex flex-col h-screen bg-[var(--color-brand-light)] font-sans">
-      <header className="bg-[var(--color-brand-darkred)] shadow-md p-4 flex items-center justify-center sticky top-0 z-10 gap-3">
-        <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-[var(--color-brand-beige)]">
-          <Image src="/avatar.png" alt="Phanlop Avatar" fill className="object-cover" />
+      <header className="bg-[var(--color-brand-darkred)] shadow-md p-4 flex items-center justify-between sticky top-0 z-10">
+        <div className="flex items-center gap-3">
+          <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-[var(--color-brand-beige)]">
+            <Image src="/avatar.png" alt="Phanlop Avatar" fill className="object-cover" />
+          </div>
+          <h1 className="text-xl font-bold text-[var(--color-brand-light)]">
+            Phanlop Boonluea
+          </h1>
         </div>
-        <h1 className="text-xl font-bold text-[var(--color-brand-light)]">
-          Phanlop Boonluea
-        </h1>
+        <button 
+          onClick={async () => {
+            setMessages([{ role: "assistant", content: "👋 Hello! I am Phanlop Boonluea. I'm excited to share my portfolio and experience with you. Feel free to ask me anything!" }]);
+            try { await fetch("http://localhost:8000/reset", { method: "POST" }); } catch (e) {}
+          }}
+          className="text-[var(--color-brand-light)] hover:text-[var(--color-brand-beige)] text-sm px-3 py-1.5 rounded-full border border-transparent hover:border-[var(--color-brand-beige)] transition-colors"
+          title="Clear Conversation"
+        >
+          Clear Chat
+        </button>
       </header>
 
       <main className="flex-1 overflow-y-auto p-4 w-full">

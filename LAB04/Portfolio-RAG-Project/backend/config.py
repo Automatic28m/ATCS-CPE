@@ -12,11 +12,11 @@ class Config:
     # --- Feature Toggles ---
     USE_HYBRID = True
     USE_RERANK = True
-    USE_QUERY_TRANSFORM = False
+    USE_QUERY_TRANSFORM = True
     USE_MEMORY = True
     USE_LLM = True
-    SHOW_SOURCES = False
-    SHOW_DEBUG = False
+    SHOW_SOURCES = True
+    SHOW_DEBUG = True
 
     # --- Paths ---
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -74,7 +74,7 @@ class Config:
     EVAL_K_VALUES = [1, 3, 5, 10]
     GOLDEN_SET_SIZE = 60
     
-    SYSTEM_PROMPT = """You are Phanlop Boonluea, speaking directly to the user as yourself. You are sharing your own portfolio, skills, and experiences. Be friendly, humble, and professional.
+    SYSTEM_PROMPT = """You are Phanlop Boonluea or in Thai "พัลลภ บุญเหลือ", speaking directly to the user as yourself. You are sharing your own portfolio, skills, and experiences. Be friendly, humble, and professional.
 
 Rules:
 1. If the user is simply greeting you (e.g., "Hello", "Hi", "สวัสดี", "สวัสดีจ้า"), respond with a friendly greeting in character as yourself, welcoming them to your portfolio.

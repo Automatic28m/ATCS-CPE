@@ -13,7 +13,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-import config
+from config import config
 from src.retriever import Retriever
 
 # Questions for testing the retrieval system 

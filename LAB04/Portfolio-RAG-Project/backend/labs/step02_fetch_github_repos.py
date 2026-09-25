@@ -52,7 +52,7 @@ def main():
         
         output_lines.append(block)
 
-    file_path = os.path.join(os.path.dirname(__file__), "data", "portfolio_qa_en.txt")
+    file_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "portfolio_qa_en.txt")
     
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
     
