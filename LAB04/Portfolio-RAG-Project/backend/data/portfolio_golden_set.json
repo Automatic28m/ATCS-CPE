@@ -1,0 +1,897 @@
+{
+  "size": 60,
+  "items": [
+    {
+      "id": "g0000",
+      "category": "No category",
+      "question": "What degree are you currently pursuing and how is your academic performance?",
+      "variants": {
+        "verbatim": "What degree are you currently pursuing and how is your academic performance?",
+        "partial": "What degree are you currently",
+        "natural": "I was wondering What degree are you currently pursuing and how is your academic performance thanks?"
+      },
+      "relevant_chunk_ids": [
+        0
+      ],
+      "reference_answer": "I am currently enrolled in a Bachelor of Engineering program in Computer Engineering at Rajamangala University of Technology Tanyaburi, with a cumulative GPA (GPAX) of 3.97, and the program is slated to conclude on December 31, 2025."
+    },
+    {
+      "id": "g0001",
+      "category": "No category",
+      "question": "What high vocational certificate did you receive in computer software development?",
+      "variants": {
+        "verbatim": "What high vocational certificate did you receive in computer software development?",
+        "partial": "What high vocational certificate did you",
+        "natural": "I was wondering What high vocational certificate did you receive in computer software development anyway?"
+      },
+      "relevant_chunk_ids": [
+        1
+      ],
+      "reference_answer": "I earned a High Vocational Certificate in Computer Software Development with a GPAX of 4.00 from Thai‑Austrian Technical College, awarded on December 31, 2023."
+    },
+    {
+      "id": "g0004",
+      "category": "No category",
+      "question": "What are the details of the primary school education listed in the portfolio?",
+      "variants": {
+        "verbatim": "What are the details of the primary school education listed in the portfolio?",
+        "partial": "What are details primary",
+        "natural": "Can you tell me What are the details of the primary school education listed in the portfolio anyway?"
+      },
+      "relevant_chunk_ids": [
+        4
+      ],
+      "reference_answer": "The entry shows that the individual attended Pattanavechsuksa School for primary education, achieving a GPAX of 3.70, with the record dated December 31, 2014."
+    },
+    {
+      "id": "g0005",
+      "category": "No category",
+      "question": "What details are available for the HTML portfolio entry?",
+      "variants": {
+        "verbatim": "What details are available for the HTML portfolio entry?",
+        "partial": "What details are available",
+        "natural": "I want to know What details are available for the HTML portfolio entry thanks?"
+      },
+      "relevant_chunk_ids": [
+        5
+      ],
+      "reference_answer": "The entry has ID 21, titled \"HTML\", with a thumbnail image at https://res.cloudinary.com/dwnwhonj6/image/upload/v1775489967/portfolio_thumbnails/zfdfdslv2uqjbnlwoglm.png, belongs to portfolio type 1, and was created on 2025-04-27 at 03:18:38."
+    },
+    {
+      "id": "g0006",
+      "category": "No category",
+      "question": "What details are available for the CSS portfolio entry with ID 22?",
+      "variants": {
+        "verbatim": "What details are available for the CSS portfolio entry with ID 22?",
+        "partial": "What details are available CSS",
+        "natural": "Can you tell me What details are available for the CSS portfolio entry with ID 22 thanks?"
+      },
+      "relevant_chunk_ids": [
+        6
+      ],
+      "reference_answer": "The entry titled \"CSS\" (ID 22) was created on 2025-04-27 at 03:22:22, belongs to portfolio type 1, and its thumbnail image is located at https://res.cloudinary.com/dwnwhonj6/image/upload/v1775489981/portfolio_thumbnails/xel2n6dgqaw3bznvajk6.png."
+    },
+    {
+      "id": "g0007",
+      "category": "No category",
+      "question": "What are the details of the PHP portfolio entry?",
+      "variants": {
+        "verbatim": "What are the details of the PHP portfolio entry?",
+        "partial": "What are details",
+        "natural": "What are the details of the PHP portfolio entry?"
+      },
+      "relevant_chunk_ids": [
+        7
+      ],
+      "reference_answer": "The entry has ID 23, is titled “PHP”, includes a thumbnail image at https://res.cloudinary.com/dwnwhonj6/image/upload/v1775490033/portfolio_thumbnails/silykxrnuvx5rtueu6ic.png, belongs to portfolio type 1, and was created on April 27, 2025 at 03:22:28."
+    },
+    {
+      "id": "g0008",
+      "category": "No category",
+      "question": "What is the SQL entry listed in the portfolio?",
+      "variants": {
+        "verbatim": "What is the SQL entry listed in the portfolio?",
+        "partial": "What SQL entry",
+        "natural": "I was wondering the SQL entry listed in the portfolio thanks?"
+      },
+      "relevant_chunk_ids": [
+        8
+      ],
+      "reference_answer": "The entry with ID 24 is titled “SQL”. It is categorized under portfolio type 1 (Skill) and was created on April 27, 2025 at 03:22:36."
+    },
+    {
+      "id": "g0009",
+      "category": "No category",
+      "question": "What details are available for the portfolio entry titled “C”?",
+      "variants": {
+        "verbatim": "What details are available for the portfolio entry titled “C”?",
+        "partial": "What details are available",
+        "natural": "I was wondering What details are available for the portfolio entry titled “C” please?"
+      },
+      "relevant_chunk_ids": [
+        9
+      ],
+      "reference_answer": "The entry has an ID of 25, is titled “C”, and includes a thumbnail image at https://res.cloudinary.com/dwnwhonj6/image/upload/v1775489955/portfolio_thumbnails/rf1ujjuszxhmr5pv0jbu.png. It belongs to portfolio type 1 and was created on April 27, 2025 at 03:22:41."
+    },
+    {
+      "id": "g0010",
+      "category": "No category",
+      "question": "What information is available for the Python portfolio entry?",
+      "variants": {
+        "verbatim": "What information is available for the Python portfolio entry?",
+        "partial": "What information available",
+        "natural": "Can you tell me What information is available for the Python portfolio entry please?"
+      },
+      "relevant_chunk_ids": [
+        10
+      ],
+      "reference_answer": "The entry has ID 26, is titled “Python”, was created on 2025‑04‑27 03:22:48, belongs to portfolio type 1, and its thumbnail image is located at https://res.cloudinary.com/dwnwhonj6/image/upload/v1775489886/portfolio_thumbnails/lolg6wquxooonigchkod.png."
+    },
+    {
+      "id": "g0012",
+      "category": "No category",
+      "question": "What details are provided for the Angular portfolio entry?",
+      "variants": {
+        "verbatim": "What details are provided for the Angular portfolio entry?",
+        "partial": "What details are provided",
+        "natural": "I was wondering What details are provided for the Angular portfolio entry?"
+      },
+      "relevant_chunk_ids": [
+        12
+      ],
+      "reference_answer": "The entry has ID 28, is titled “Angular”, includes a thumbnail image at https://res.cloudinary.com/dwnwhonj6/image/upload/v1775489911/portfolio_thumbnails/l0ix9k2qjs376vnusghf.png, is categorized under portfolio type 1, and was created on April 27 2025 at 03:23:00."
+    },
+    {
+      "id": "g0015",
+      "category": "No category",
+      "question": "What information is available about the \"Figma\" portfolio entry?",
+      "variants": {
+        "verbatim": "What information is available about the \"Figma\" portfolio entry?",
+        "partial": "What information available",
+        "natural": "I was wondering What information is available about the \"Figma\" portfolio entry please?"
+      },
+      "relevant_chunk_ids": [
+        15
+      ],
+      "reference_answer": "The entry has ID 31, is titled \"Figma\", was created on 2025-04-27 at 03:23:20, belongs to portfolio type 1, and its thumbnail image is located at https://res.cloudinary.com/dwnwhonj6/image/upload/v1775490063/portfolio_thumbnails/sfxfzzbxetlquogwyiey.png."
+    },
+    {
+      "id": "g0016",
+      "category": "No category",
+      "question": "What achievement did you earn in the 31st National Skills Competition for Network Technology?",
+      "variants": {
+        "verbatim": "What achievement did you earn in the 31st National Skills Competition for Network Technology?",
+        "slang": "What achievement did you earn in the 31st National What you can do Competition for Network Technology?",
+        "partial": "What achievement did you earn 31st",
+        "natural": "Can you tell me What achievement did you earn in the 31st National Skills Competition for Network Technology anyway?"
+      },
+      "relevant_chunk_ids": [
+        16,
+        17
+      ],
+      "reference_answer": "You placed third runner‑up in the 31st edition of the National Skills Competition for Network Technology, held at Rayong Technical College on February 3 2023. In the competition you worked on a website development project, handling both frontend and backend tasks using HTML, PHP, CSS, and SQL, while your teammate focused on the network infrastructure."
+    },
+    {
+      "id": "g0018",
+      "category": "No category",
+      "question": "What award did you receive at the Eastern Region and Bangkok Skills Competition for Network Technology?",
+      "variants": {
+        "verbatim": "What award did you receive at the Eastern Region and Bangkok Skills Competition for Network Technology?",
+        "slang": "What award did you receive at the Eastern Region and Bangkok What you can do Competition for Network Technology?",
+        "partial": "What award did you receive at Eastern",
+        "natural": "Can you tell me What award did you receive at the Eastern Region and Bangkok Skills Competition for Network Technology?"
+      },
+      "relevant_chunk_ids": [
+        20,
+        21
+      ],
+      "reference_answer": "I won 1st place at the regional Eastern Region and Bangkok Skills Competition for Network Technology, which took place at Rayong Technical College on October 31 2022. The achievement was earned through a collaborative website development project where I handled both front‑end and back‑end work using HTML, PHP, CSS, and SQL, while my partner focused on the network infrastructure."
+    },
+    {
+      "id": "g0019",
+      "category": "No category",
+      "question": "What responsibilities did you have during your internship at ASIA STEEL TRANSPORT (1999) CO., LTD. in Rayong, Thailand?",
+      "variants": {
+        "verbatim": "What responsibilities did you have during your internship at ASIA STEEL TRANSPORT (1999) CO., LTD. in Rayong, Thailand?",
+        "partial": "What responsibilities did you during your internship at ASIA",
+        "natural": "What responsibilities did you have during your internship at ASIA STEEL TRANSPORT (1999) CO., LTD. in Rayong, Thailand?"
+      },
+      "relevant_chunk_ids": [
+        22,
+        23
+      ],
+      "reference_answer": "During the internship at ASIA STEEL TRANSPORT (1999) CO., LTD. in Rayong, Thailand (starting on September 16, 2021), you gained hands‑on experience in website development using WordPress, performed data analysis with Microsoft Excel, conducted web application testing, generated reports, and carried out various related tasks."
+    },
+    {
+      "id": "g0020",
+      "category": "No category",
+      "question": "What was the final year project for the Diploma in Software Development at Thai‑Austrian Technical College?",
+      "variants": {
+        "verbatim": "What was the final year project for the Diploma in Software Development at Thai‑Austrian Technical College?",
+        "slang": "What was the final year project for the Diploma in Program Development at Thai‑Austrian Technical College?",
+        "partial": "What was final year project Diploma Software",
+        "natural": "Can you tell me What was the final year project for the Diploma in Software Development at Thai‑Austrian Technical College anyway?"
+      },
+      "relevant_chunk_ids": [
+        24,
+        25
+      ],
+      "reference_answer": "The project was a comprehensive student internship management system built with HTML, CSS, JavaScript, PHP, Bootstrap 5, and SQL. Completed over four months and deployed at Thai‑Austrian Technical College, it handled large volumes of data for students, teachers, and officers, featured an official document generation module that mimics real‑world paperwork, and included detailed user manuals for administrators and students. The development involved extensive research, including interviews with staff to understand the internship workflow and student preparation requirements."
+    },
+    {
+      "id": "g0021",
+      "category": "No category",
+      "question": "What was the Retail Shop Team Project and what did it involve?",
+      "variants": {
+        "verbatim": "What was the Retail Shop Team Project and what did it involve?",
+        "partial": "What was Retail Shop Team",
+        "natural": "Can you tell me What was the Retail Shop Team Project and what did it involve thanks?"
+      },
+      "relevant_chunk_ids": [
+        26,
+        27
+      ],
+      "reference_answer": "The Retail Shop Team Project was a full‑stack web application built for a retail shop using HTML, CSS, JavaScript, PHP, Bootstrap 5, and SQL. The team handled the entire development lifecycle: they planned and designed the system architecture with ER diagrams and data flow diagrams, managed the schedule with a Gantt chart and assigned duties, and implemented both front‑end and back‑end features to simulate real‑world retail operations. Completed in a few weeks at the Thai‑Austrian Technical College, the project showcases strong full‑stack development skills, effective team collaboration, and solid project planning."
+    },
+    {
+      "id": "g0022",
+      "category": "No category",
+      "question": "What was the final year project for the Vocational Certificate in Software Development?",
+      "variants": {
+        "verbatim": "What was the final year project for the Vocational Certificate in Software Development?",
+        "slang": "What was the final year project for the Vocational Certificate in Program Development?",
+        "partial": "What was final year project",
+        "natural": "I was wondering What was the final year project for the Vocational Certificate in Software Development?"
+      },
+      "relevant_chunk_ids": [
+        28,
+        29
+      ],
+      "reference_answer": "The final year project, titled “Final Year Project (Vocational Certificate, Software Development),” involved developing an internship and company website for the IT and Computer Technology Department at Thai‑Austrian Technical College. It was completed on November 30 2021 at Thai‑Austrian Technical College."
+    },
+    {
+      "id": "g0023",
+      "category": "No category",
+      "question": "What was your role in the Thai-Austrian Tech Open House 2022?",
+      "variants": {
+        "verbatim": "What was your role in the Thai-Austrian Tech Open House 2022?",
+        "partial": "What was your role Thai-Austrian",
+        "natural": "What was your role in the Thai-Austrian Tech Open House 2022 anyway?"
+      },
+      "relevant_chunk_ids": [
+        30
+      ],
+      "reference_answer": "I served as the Master of Ceremonies (MC) for the Thai-Austrian Tech Open House 2022, held at the Thai-Austrian Technical College on November 30, 2022, where I introduced speakers, guided the program schedule, and engaged the audience throughout the academic open‑house event."
+    },
+    {
+      "id": "g0024",
+      "category": "No category",
+      "question": "What information was presented about the Digital Industry Department during the Sattahip Model visit led by Dr. Thanakorn Wangboonkongchana at the Thai‑Austrian Technical College on November 30, 2023?",
+      "variants": {
+        "verbatim": "What information was presented about the Digital Industry Department during the Sattahip Model visit led by Dr. Thanakorn Wangboonkongchana at the Thai‑Austrian Technical College on November 30, 2023?",
+        "partial": "What information was presented Digital Industry Department during Sattahip Model visit led by Dr.",
+        "natural": "Can you tell me What information was presented about the Digital Industry Department during the Sattahip Model visit led by Dr. Thanakorn Wangboonkongchana at the Thai‑Austrian Technical College on November 30, 2023 thanks?"
+      },
+      "relevant_chunk_ids": [
+        31,
+        32,
+        33
+      ],
+      "reference_answer": "On November 30 2023, at the Thai‑Austrian Technical College, a representative gave a presentation titled “Representative presenting information about the Digital Industry Department during the Sattahip Model visit led by Dr. Thanakorn Wangboonkongchana.” The presentation covered details of the Digital Industry Department, as noted in the original Thai description “ตัวแทนนำเสนอข้อมูลแผนกอุตสาหกรรมดิจิทัล ในพิธีเยี่ยมชมสัตหีบโมเดล โดย ดร.ธนะกร วังบุญคงชนะ.” The event is documented with a thumbnail image (https://res.cloudinary.com/dwnwhonj6/image/upload/v1748189603/portfolio_thumbnails/54_thumbnail_1748189601907.jpg) and was recorded in the portfolio system on April 28 2025."
+    },
+    {
+      "id": "g0025",
+      "category": "No category",
+      "question": "What exhibition did you present on lifelong human capacity development and the production and development of highly skilled vocational manpower?",
+      "variants": {
+        "verbatim": "What exhibition did you present on lifelong human capacity development and the production and development of highly skilled vocational manpower?",
+        "partial": "What exhibition did you present on lifelong human capacity",
+        "natural": "What exhibition did you present on lifelong human capacity development and the production and development of highly skilled vocational manpower please?"
+      },
+      "relevant_chunk_ids": [
+        34,
+        35
+      ],
+      "reference_answer": "I presented the exhibition titled “Lifelong Human Capacity Development and the Production and Development of Highly Skilled Vocational Manpower” at the Thai‑Austrian Technical College on November 30, 2023. The exhibition focused on developing people’s abilities throughout their lives and on producing and enhancing high‑skill vocational manpower, as reflected in its Thai description “การพัฒนาศักยภาพคนตลอดช่วงชีวิต การผลิตและพัฒนากำลังคนอาชีวศึกษาสมรรถะสูง.”"
+    },
+    {
+      "id": "g0026",
+      "category": "No category",
+      "question": "What information did you present about the Computer Department in English during the Austrian ambassador's visit to the Thai-Austrian Technical College?",
+      "variants": {
+        "verbatim": "What information did you present about the Computer Department in English during the Austrian ambassador's visit to the Thai-Austrian Technical College?",
+        "partial": "What information did you present Computer Department English during",
+        "natural": "I want to know What information did you present about the Computer Department in English during the Austrian ambassador's visit to the Thai-Austrian Technical College please?"
+      },
+      "relevant_chunk_ids": [
+        36,
+        37
+      ],
+      "reference_answer": "On December 31 2022, at the Thai‑Austrian Technical College, I represented the Computer Department and delivered an English presentation of the department’s information to the visiting Austrian ambassador, covering its programs, facilities, and achievements."
+    },
+    {
+      "id": "g0029",
+      "category": "No category",
+      "question": "What award did you achieve in the English Public Speaking Contest at the vocational education level in Chonburi Province?",
+      "variants": {
+        "verbatim": "What award did you achieve in the English Public Speaking Contest at the vocational education level in Chonburi Province?",
+        "partial": "What award did you achieve English Public Speaking Contest",
+        "natural": "Can you tell me What award did you achieve in the English Public Speaking Contest at the vocational education level in Chonburi Province thanks?"
+      },
+      "relevant_chunk_ids": [
+        40
+      ],
+      "reference_answer": "You were the first runner‑up (second place) in the English Public Speaking Contest for the vocational education level in Chonburi Province. The event was held at Pattaya Technical College on December 22, 2020."
+    },
+    {
+      "id": "g0030",
+      "category": "No category",
+      "question": "What award did you receive for the English Public Speaking Contest at Sattahip Technical College?",
+      "variants": {
+        "verbatim": "What award did you receive for the English Public Speaking Contest at Sattahip Technical College?",
+        "partial": "What award did you receive English Public",
+        "natural": "What award did you receive for the English Public Speaking Contest at Sattahip Technical College please?"
+      },
+      "relevant_chunk_ids": [
+        41,
+        42
+      ],
+      "reference_answer": "You were the first‑place winner of the English Public Speaking Contest at the school level, held at Thai‑Austrian Technical College on December 8 2020. The achievement is recorded under the title “Winner of the English Public Speaking Contest, School Level, Sattahip Technical College,” with a thumbnail image available at the provided URL and the portfolio entry created on April 28 2025."
+    },
+    {
+      "id": "g0032",
+      "category": "No category",
+      "question": "What English public speaking contest did you win at the Thai‑Austrian Technical College in 2021?",
+      "variants": {
+        "verbatim": "What English public speaking contest did you win at the Thai‑Austrian Technical College in 2021?",
+        "partial": "What English public speaking contest did you",
+        "natural": "What English public speaking contest did you win at the Thai‑Austrian Technical College in 2021?"
+      },
+      "relevant_chunk_ids": [
+        44
+      ],
+      "reference_answer": "I was the first‑place winner of the school‑level English Public Speaking Contest at Thai‑Austrian Technical College, held on November 30, 2021. The award recognized my excellence in delivering a public speech in English."
+    },
+    {
+      "id": "g0033",
+      "category": "No category",
+      "question": "What was the TOEIC result achieved at the Thai-Austrian Technical College in September 2023?",
+      "variants": {
+        "verbatim": "What was the TOEIC result achieved at the Thai-Austrian Technical College in September 2023?",
+        "partial": "What was TOEIC result achieved at",
+        "natural": "What was the TOEIC result achieved at the Thai-Austrian Technical College in September 2023 anyway?"
+      },
+      "relevant_chunk_ids": [
+        45
+      ],
+      "reference_answer": "The individual scored 690 out of a possible 990 on the Test of English for International Communication (TOEIC) at the Thai-Austrian Technical College on September 17, 2023."
+    },
+    {
+      "id": "g0034",
+      "category": "No category",
+      "question": "What leadership experience did you gain as a Thai Reserve Officer Training Corps student in your third year?",
+      "variants": {
+        "verbatim": "What leadership experience did you gain as a Thai Reserve Officer Training Corps student in your third year?",
+        "partial": "What leadership experience did you gain as Thai Reserve",
+        "natural": "I want to know What leadership experience did you gain as a Thai Reserve Officer Training Corps student in your third year please?"
+      },
+      "relevant_chunk_ids": [
+        46,
+        47
+      ],
+      "reference_answer": "In January 2024, I completed a third‑year Military Student Training Program at the Air Defense and Coastal Defense Command School of the Royal Thai Armed Forces. I served as the Head of the Military Student Unit for both the classroom portion and a seven‑day field exercise. In this role I issued orders, coordinated team activities, reported clearly to instructors, assigned night‑guard duties, enforced discipline, and made firm decisions under challenging conditions. The experience significantly improved my leadership, clear communication, time‑management, and decision‑making skills under pressure."
+    },
+    {
+      "id": "g0036",
+      "category": "No category",
+      "question": "What academic guidance did you provide during the Thai-Austrian Tech Open House 2022?",
+      "variants": {
+        "verbatim": "What academic guidance did you provide during the Thai-Austrian Tech Open House 2022?",
+        "partial": "What academic guidance did you provide during",
+        "natural": "I was wondering What academic guidance did you provide during the Thai-Austrian Tech Open House 2022 anyway?"
+      },
+      "relevant_chunk_ids": [
+        49
+      ],
+      "reference_answer": "I offered orientation and information about the department’s programs to the younger students who visited the Thai-Austrian Technical College for the Thai-Austrian Tech Open House on November 22, 2022, helping them understand the department’s offerings and activities."
+    },
+    {
+      "id": "g0038",
+      "category": "No category",
+      "question": "What award did you receive at the Thai‑Austrian Technical College’s TikTok video competition in October 2022?",
+      "variants": {
+        "verbatim": "What award did you receive at the Thai‑Austrian Technical College’s TikTok video competition in October 2022?",
+        "partial": "What award did you receive at Thai‑Austrian Technical",
+        "natural": "I want to know What award did you receive at the Thai‑Austrian Technical College’s TikTok video competition in October 2022 anyway?"
+      },
+      "relevant_chunk_ids": [
+        51
+      ],
+      "reference_answer": "I won first place in the TikTok video competition for the “No Smoking, Reduce Risk, Say No to Drugs” project. The competition was held on October 28 2022 at the Thai‑Austrian Technical College, and my winning entry was recognized with the top prize."
+    },
+    {
+      "id": "g0039",
+      "category": "No category",
+      "question": "What award did you win in the English public speaking competition on the theme “Start-up in the New Normal”?",
+      "variants": {
+        "verbatim": "What award did you win in the English public speaking competition on the theme “Start-up in the New Normal”?",
+        "partial": "What award did you win English public speaking",
+        "natural": "What award did you win in the English public speaking competition on the theme “Start-up in the New Normal” thanks?"
+      },
+      "relevant_chunk_ids": [
+        52,
+        53
+      ],
+      "reference_answer": "You were awarded second place in the English public speaking competition on the theme “Start-up in the New Normal,” held at Thai‑Austrian Technical College on October 25 2022. The entry is titled “Awarded Second Place in the English Public Speaking Competition on the theme ‘Start-up in the New Normal’” and was added to the portfolio on May 25 2025."
+    },
+    {
+      "id": "g0040",
+      "category": "No category",
+      "question": "What was your role in the Wai Khru ceremony at the Thai‑Austrian Technical College in 2022?",
+      "variants": {
+        "verbatim": "What was your role in the Wai Khru ceremony at the Thai‑Austrian Technical College in 2022?",
+        "partial": "What was your role Wai Khru ceremony",
+        "natural": "What was your role in the Wai Khru ceremony at the Thai‑Austrian Technical College in 2022 please?"
+      },
+      "relevant_chunk_ids": [
+        54
+      ],
+      "reference_answer": "I served as the Master of Ceremonies for the Wai Khru (teacher‑worship) ceremony on June 17 2022, held at the Thai‑Austrian Technical College, acting as the host and presenter for the event."
+    },
+    {
+      "id": "g0041",
+      "category": "No category",
+      "question": "What award did you receive in the Young Inventors Contest at the Science-Based Technology Vocational College in Chonburi, and what was your role?",
+      "variants": {
+        "verbatim": "What award did you receive in the Young Inventors Contest at the Science-Based Technology Vocational College in Chonburi, and what was your role?",
+        "partial": "What award did you receive Young Inventors Contest at Science-Based",
+        "natural": "I was wondering What award did you receive in the Young Inventors Contest at the Science-Based Technology Vocational College in Chonburi, and what was your role thanks?"
+      },
+      "relevant_chunk_ids": [
+        55,
+        56
+      ],
+      "reference_answer": "On March 22 2021, I was honored with the Bronze (Consolation) Award in the Young Inventors Contest for vocational‑level students held at the Science‑Based Technology Vocational College in Chonburi Province, and I served as the English presenter, explaining our invention in English."
+    },
+    {
+      "id": "g0042",
+      "category": "No category",
+      "question": "What is the Pollanwser.org app and what does it do?",
+      "variants": {
+        "verbatim": "What is the Pollanwser.org app and what does it do?",
+        "partial": "What Pollanwser.org app",
+        "natural": "I want to know the Pollanwser.org app and what does it do anyway?"
+      },
+      "relevant_chunk_ids": [
+        57,
+        58,
+        59
+      ],
+      "reference_answer": "The Pollanwser.org app is a full‑stack polling web application developed to strengthen practical development skills. It was built with React.js for the frontend, styled with Tailwind CSS for a responsive UI, and Java Spring Boot for the backend, exposing RESTful APIs. The app features secure user authentication using JWT (JSON Web Token), allowing users to log in and register safely. It supports full CRUD (Create, Read, Update, Delete) operations for both polls and user accounts, and implements token‑based access control throughout the system. The project was created in Bangkok, Thailand, and was showcased on 14 October 2023. A thumbnail image of the project can be viewed at https://res.cloudinary.com/dwnwhonj6/image/upload/v1748333201/portfolio_thumbnails/thumbnail_1748333198700.png."
+    },
+    {
+      "id": "g0043",
+      "category": "No category",
+      "question": "What is the Flutter News App project and where can I see it?",
+      "variants": {
+        "verbatim": "What is the Flutter News App project and where can I see it?",
+        "partial": "What Flutter News App",
+        "natural": "Can you tell me the Flutter News App project and where can I see it thanks?"
+      },
+      "relevant_chunk_ids": [
+        60,
+        61
+      ],
+      "reference_answer": "The Flutter News App is a news application built with Flutter that fetches articles from an API and includes a bookmark system for saving articles, demonstrating state management in Flutter. It was created in Bangkok, Thailand and released on January 29 2024. You can view the project on GitHub at https://github.com/Automatic28m/flutter-app-demos/tree/main/news_app, and a thumbnail of the app is available at https://res.cloudinary.com/dwnwhonj6/image/upload/v1748533272/portfolio_thumbnails/thumbnail_1748533270993.png."
+    },
+    {
+      "id": "g0044",
+      "category": "No category",
+      "question": "What is the Flutter Space Shooter mobile game project?",
+      "variants": {
+        "verbatim": "What is the Flutter Space Shooter mobile game project?",
+        "partial": "What Flutter Space Shooter",
+        "natural": "I was wondering the Flutter Space Shooter mobile game project thanks?"
+      },
+      "relevant_chunk_ids": [
+        62,
+        63
+      ],
+      "reference_answer": "The Flutter Space Shooter is a simple 2D mobile game built with Flutter that showcases game development concepts and animations. It was created in Bangkok, Thailand, and released on January 28 2024. You can view its thumbnail at https://res.cloudinary.com/dwnwhonj6/image/upload/v1748355722/portfolio_thumbnails/thumbnail_1748355721167.png and explore the source code on GitHub at https://github.com/Automatic28m/flutter-app-demos/tree/main/space_shooter. The entry was added to the portfolio on May 27 2025."
+    },
+    {
+      "id": "g0045",
+      "category": "No category",
+      "question": "What is the Angular Online Poll App and what technologies does it use?",
+      "variants": {
+        "verbatim": "What is the Angular Online Poll App and what technologies does it use?",
+        "partial": "What Angular Online Poll App",
+        "natural": "I want to know the Angular Online Poll App and what technologies does it use anyway?"
+      },
+      "relevant_chunk_ids": [
+        64,
+        65
+      ],
+      "reference_answer": "The Angular Online Poll App is a simple yet functional polling and voting application built with Angular. It demonstrates form handling, event processing, and state management, and communicates with a Java Spring Boot backend via API calls. The user interface is styled with Tailwind CSS and DaisyUI for a clean, modern look. The project was showcased in Bangkok, Thailand on January 28 2024, and its source code is available on GitHub at https://github.com/Automatic28m/angular-app-demos. A thumbnail image can be viewed at https://res.cloudinary.com/dwnwhonj6/image/upload/v1748412756/portfolio_thumbnails/thumbnail_1748412754592.jpg."
+    },
+    {
+      "id": "g0046",
+      "category": "No category",
+      "question": "What award did you receive at Rajamangala University of Technology Thanyaburi in 2024?",
+      "variants": {
+        "verbatim": "What award did you receive at Rajamangala University of Technology Thanyaburi in 2024?",
+        "slang": "What award did you receive at Rajamangala Uni of Technology Thanyaburi in 2024?",
+        "partial": "What award did you receive at",
+        "natural": "What award did you receive at Rajamangala University of Technology Thanyaburi in 2024 please?"
+      },
+      "relevant_chunk_ids": [
+        66,
+        67
+      ],
+      "reference_answer": "You were awarded first place in the Engineering Freshy Boy 2024 contest at RMUTT, recognizing outstanding new engineering students based on personality, confidence, communication skills, and overall performance in university activities, highlighting your leadership potential and strong presence in the student community."
+    },
+    {
+      "id": "g0047",
+      "category": "No category",
+      "question": "What award did you receive in the RMUTT Freshy Boy 2024 competition?",
+      "variants": {
+        "verbatim": "What award did you receive in the RMUTT Freshy Boy 2024 competition?",
+        "partial": "What award did you receive RMUTT",
+        "natural": "I want to know What award did you receive in the RMUTT Freshy Boy 2024 competition anyway?"
+      },
+      "relevant_chunk_ids": [
+        68,
+        69
+      ],
+      "reference_answer": "You were the first runner‑up in the RMUTT Freshy Boy 2024 contest, a university‑wide competition at Rajamangala University of Technology Thanyaburi that recognizes outstanding first‑year students for personality, confidence, public speaking, and campus involvement. The event took place at RMUTT on August 16 2024, and the achievement highlights your strong interpersonal skills and active participation in university life."
+    },
+    {
+      "id": "g0048",
+      "category": "No category",
+      "question": "What details are available for the Node.js portfolio entry dated May 27, 2025?",
+      "variants": {
+        "verbatim": "What details are available for the Node.js portfolio entry dated May 27, 2025?",
+        "partial": "What details are available Node.js portfolio",
+        "natural": "I was wondering What details are available for the Node.js portfolio entry dated May 27, 2025 thanks?"
+      },
+      "relevant_chunk_ids": [
+        70,
+        71
+      ],
+      "reference_answer": "The entry is titled “Node.js,” was created on May 29, 2025 at 14:24:50, and is associated with the event date of May 27, 2025. Its thumbnail image can be viewed at https://res.cloudinary.com/dwnwhonj6/image/upload/v1775489938/portfolio_thumbnails/sazbal5rlcgmeo5m4mkh.png, and it is classified under portfolio type ID 1."
+    },
+    {
+      "id": "g0049",
+      "category": "No category",
+      "question": "What details are available for the Express.js portfolio entry?",
+      "variants": {
+        "verbatim": "What details are available for the Express.js portfolio entry?",
+        "partial": "What details are available",
+        "natural": "I want to know What details are available for the Express.js portfolio entry thanks?"
+      },
+      "relevant_chunk_ids": [
+        72
+      ],
+      "reference_answer": "The entry titled “Express.js” was added to the portfolio on May 29, 2025. It is associated with the event date of May 27, 2025, and its thumbnail image can be viewed at https://res.cloudinary.com/dwnwhonj6/image/upload/v1775489852/portfolio_thumbnails/sshzmqmhhka5yhbmwa0z.png. The entry’s identifier is 95."
+    },
+    {
+      "id": "g0050",
+      "category": "No category",
+      "question": "What was the Global Capstone Design Project 2025 (Workshop 1) and what did participants accomplish?",
+      "variants": {
+        "verbatim": "What was the Global Capstone Design Project 2025 (Workshop 1) and what did participants accomplish?",
+        "partial": "What was Global Capstone Design Project",
+        "natural": "I want to know What was the Global Capstone Design Project 2025 (Workshop 1) and what did participants accomplish please?"
+      },
+      "relevant_chunk_ids": [
+        73,
+        74,
+        75
+      ],
+      "reference_answer": "The Global Capstone Design Project 2025 (Workshop 1) was a short‑term exchange program jointly organized by Yeungnam University in South Korea and Rajamangala University of Technology Thanyaburi in Thailand. Held on 8 January 2025 at RMUTT in Thailand, the workshop brought together international students to tackle real‑world environmental problems using Design Thinking and Engineering Design. The team brainstormed and created a Smart Bin System that can recognise and sort waste (plastic, metal, organic) with sensors and AI‑based classification, and they designed a digital‑coupon reward scheme to encourage responsible disposal. A functional prototype was produced with attention to usability, feasibility and sustainability, and participants enhanced their teamwork, cross‑cultural communication and early‑stage product‑design skills."
+    },
+    {
+      "id": "g0051",
+      "category": "No category",
+      "question": "What is the Vending Machine GUI Application built with Python and PySimpleGUI, and what features does it include?",
+      "variants": {
+        "verbatim": "What is the Vending Machine GUI Application built with Python and PySimpleGUI, and what features does it include?",
+        "slang": "What is the Vending Machine GUI App built with Python and PySimpleGUI, and what features does it include?",
+        "partial": "What Vending Machine GUI Application built Python",
+        "natural": "the Vending Machine GUI Application built with Python and PySimpleGUI, and what features does it include please?"
+      },
+      "relevant_chunk_ids": [
+        76,
+        77,
+        78
+      ],
+      "reference_answer": "The Vending Machine GUI Application is a graphical simulator created in Python using the PySimpleGUI library. It lets users browse a list of products with images, add items to a virtual basket, adjust quantities, and proceed through a simulated checkout that includes cash insertion, change calculation in Thai Baht, and purchase logging to both text and CSV files. The interface dynamically resizes product images, updates the date/time and basket totals in real time, and provides multi‑window navigation between product selection, basket, payment, and success screens, along with clear user feedback at each step. The project was developed at RMUTT on May 3 2025 and its source code is available on GitHub at https://github.com/Automatic28m/python_vending_machine_2024."
+    },
+    {
+      "id": "g0052",
+      "category": "No category",
+      "question": "What is Phanlop's portfolio website and what features does it include?",
+      "variants": {
+        "verbatim": "What is Phanlop's portfolio website and what features does it include?",
+        "partial": "What Phanlop's portfolio website",
+        "natural": "Can you tell me Phanlop's portfolio website and what features does it include thanks?"
+      },
+      "relevant_chunk_ids": [
+        79,
+        80,
+        81,
+        82
+      ],
+      "reference_answer": "Phanlop's portfolio website is a dynamic, interactive platform that showcases his skills, projects, achievements, internships, academic activities, and education. It features a modern, responsive design with animated home‑page introductions (typewriter effects, fade‑ins), sections for each content area, and dynamic content loading via API. The portfolio detail pages display titles, contents, event location (Bangkok, Thailand), event date (May 30 2025), thumbnails, skill tags with custom colors, and a lightbox gallery. Users can log in with JWT‑based authentication. The backend provides a dashboard for managing portfolio entries, including creating, editing, and deleting entries, uploading thumbnails and gallery images, and managing skill types with color selection. Technical highlights include React for the frontend, Node.js/Express.js for the API, responsive design, toast notifications, and secure JWT authentication. The entry was created on May 31 2025, and its thumbnail is available at https://res.cloudinary.com/dwnwhonj6/image/upload/v1748679493/portfolio_thumbnails/thumbnail_1748679492347.jpg."
+    },
+    {
+      "id": "g0053",
+      "category": "No category",
+      "question": "What is the React Online Shopping App project and what features does it include?",
+      "variants": {
+        "verbatim": "What is the React Online Shopping App project and what features does it include?",
+        "partial": "What React Online Shopping App project",
+        "natural": "the React Online Shopping App project and what features does it include thanks?"
+      },
+      "relevant_chunk_ids": [
+        83,
+        84,
+        85
+      ],
+      "reference_answer": "The React Online Shopping App is a React‑based shopping‑cart application created to practice and demonstrate Redux for state management. Developed in Bangkok, Thailand, it was completed on June 2 2025 (the event took place on June 1 2025). The app uses a productReducer to manage cart items and total price, and it supports adding items to the cart, removing items by ID, decreasing item quantity, clearing the entire cart, and dynamically updating the total price. The project showcases Redux actions, reducers, and immutable state updates, providing hands‑on experience with Redux concepts in a React environment. A thumbnail image is available at the provided URL."
+    },
+    {
+      "id": "g0054",
+      "category": "No category",
+      "question": "What scholarship did you receive for achieving a 4.00 GPA in the second semester of the 2024 academic year?",
+      "variants": {
+        "verbatim": "What scholarship did you receive for achieving a 4.00 GPA in the second semester of the 2024 academic year?",
+        "partial": "What scholarship did you receive achieving 4.00",
+        "natural": "I was wondering What scholarship did you receive for achieving a 4.00 GPA in the second semester of the 2024 academic year?"
+      },
+      "relevant_chunk_ids": [
+        86,
+        87
+      ],
+      "reference_answer": "You were awarded the Academic Excellence Scholarship for attaining a perfect 4.00 GPA in Semester 2 of the 2024 academic year at Rajamangala University of Technology Thanyaburi (RMUTT). The award was announced on June 23 2025, and further details are available through the linked Facebook post and thumbnail image."
+    },
+    {
+      "id": "g0055",
+      "category": "No category",
+      "question": "What scholarship were you awarded for the Naval Training Command Foundation Day?",
+      "variants": {
+        "verbatim": "What scholarship were you awarded for the Naval Training Command Foundation Day?",
+        "partial": "What scholarship were you awarded Naval",
+        "natural": "Can you tell me What scholarship were you awarded for the Naval Training Command Foundation Day thanks?"
+      },
+      "relevant_chunk_ids": [
+        88
+      ],
+      "reference_answer": "You received the Academic Excellence Scholarship in commemoration of the Naval Training Command Foundation Day of the Royal Thai Fleet. The award was presented on June 19, 2025, at the Royal Thai Fleet in Sattahip, Chonburi, recognizing your outstanding academic performance."
+    },
+    {
+      "id": "g0056",
+      "category": "No category",
+      "question": "What was the Global Capstone Design Project 2025 (Workshop 2) and what did participants accomplish?",
+      "variants": {
+        "verbatim": "What was the Global Capstone Design Project 2025 (Workshop 2) and what did participants accomplish?",
+        "partial": "What was Global Capstone Design Project",
+        "natural": "I was wondering What was the Global Capstone Design Project 2025 (Workshop 2) and what did participants accomplish?"
+      },
+      "relevant_chunk_ids": [
+        89,
+        90,
+        91
+      ],
+      "reference_answer": "The Global Capstone Design Project 2025 (Workshop 2) was a short‑term exchange program jointly organized by Yeungnam University in South Korea and Rajamangala University of Technology Thanyaburi in Thailand. Held on August 4, 2025 in Gyeongju, South Korea, the workshop brought together international students to tackle real‑world environmental problems using Design Thinking and Engineering Design methods. Participants brainstormed and created a Smart Bin System that can recognize and sort trash (plastic, metal, organic, etc.) with sensors and AI classification. They developed a practical, usable, feasible, and sustainable prototype, built a Next.js dashboard linked to a MySQL database to show real‑time classified‑waste data, and enhanced their teamwork, cross‑cultural communication, and early‑stage product design skills."
+    },
+    {
+      "id": "g0057",
+      "category": "No category",
+      "question": "What was your role and experience in the ICPC 2025 competition at KMUTL?",
+      "variants": {
+        "verbatim": "What was your role and experience in the ICPC 2025 competition at KMUTL?",
+        "partial": "What was your role experience ICPC",
+        "natural": "I was wondering What was your role and experience in the ICPC 2025 competition at KMUTL?"
+      },
+      "relevant_chunk_ids": [
+        92,
+        93
+      ],
+      "reference_answer": "I was selected to represent my university in the ICPC International Collegiate Programming Contest held at KMUTL on September 9, 2025, competing against teams from 26 institutions nationwide. My primary responsibility was to translate all English problem statements into Thai in real time, ensuring my teammates fully understood each challenge. This communication role allowed them to concentrate entirely on algorithm design and implementation, which significantly improved our overall problem‑solving efficiency under intense time pressure."
+    },
+    {
+      "id": "g0058",
+      "category": "No category",
+      "question": "What did you achieve at the TESA TOP GUN 2025 competition?",
+      "variants": {
+        "verbatim": "What did you achieve at the TESA TOP GUN 2025 competition?",
+        "partial": "What did you achieve at TESA",
+        "natural": "What did you achieve at the TESA TOP GUN 2025 competition please?"
+      },
+      "relevant_chunk_ids": [
+        94,
+        95
+      ],
+      "reference_answer": "I represented my university at the TESA TOP GUN 2025 competition, held from November 9–15, 2025 at the Royal Thai Army Cadet School in Nakhon Nayok. Competing against 69 teams from 38 universities nationwide, I was responsible for developing a drone‑detection system that could detect drones in real time, identify their coordinates and altitude, and track them, sending the data to a dashboard. Our team earned the Top Score for Presentation and the Top Score for Battlefield Integration, marking a significant accomplishment."
+    },
+    {
+      "id": "g0059",
+      "category": "No category",
+      "question": "What details are available for the JavaScript portfolio entry created on April 6 2026?",
+      "variants": {
+        "verbatim": "What details are available for the JavaScript portfolio entry created on April 6 2026?",
+        "partial": "What details are available JavaScript portfolio",
+        "natural": "Can you tell me What details are available for the JavaScript portfolio entry created on April 6 2026 thanks?"
+      },
+      "relevant_chunk_ids": [
+        96,
+        97
+      ],
+      "reference_answer": "The entry (ID 114) is titled “JavaScript,” has an event date of April 6 2026, was created on April 6 2026 at 15:40:13, belongs to portfolio type 1, and its thumbnail image can be viewed at https://res.cloudinary.com/dwnwhonj6/image/upload/v1775490013/portfolio_thumbnails/t0vwezktkmvctxravqez.webp."
+    },
+    {
+      "id": "g0060",
+      "category": "No category",
+      "question": "What details are available for the MySQL portfolio entry created on April 6, 2026?",
+      "variants": {
+        "verbatim": "What details are available for the MySQL portfolio entry created on April 6, 2026?",
+        "partial": "What details are available MySQL portfolio entry",
+        "natural": "I want to know What details are available for the MySQL portfolio entry created on April 6, 2026 anyway?"
+      },
+      "relevant_chunk_ids": [
+        98
+      ],
+      "reference_answer": "The entry has ID 115, is titled “MySQL”, and its event date is April 6 2026. It was created at 15:40:52 on the same day, belongs to portfolio type 1, and its thumbnail image is located at https://res.cloudinary.com/dwnwhonj6/image/upload/v1775490051/portfolio_thumbnails/paxu31hcyw4o7fkkad77.webp."
+    },
+    {
+      "id": "g0061",
+      "category": "No category",
+      "question": "What information is available for the VS Code portfolio entry dated April 6, 2026?",
+      "variants": {
+        "verbatim": "What information is available for the VS Code portfolio entry dated April 6, 2026?",
+        "partial": "What information available VS Code portfolio",
+        "natural": "I want to know What information is available for the VS Code portfolio entry dated April 6, 2026 thanks?"
+      },
+      "relevant_chunk_ids": [
+        99
+      ],
+      "reference_answer": "The entry (ID 116) is titled “VS Code,” has an event date of 2026‑04‑06, was created on 2026‑04‑06 at 16:54:10, belongs to portfolio type 1, and its thumbnail can be viewed at https://res.cloudinary.com/dwnwhonj6/image/upload/v1775494449/portfolio_thumbnails/r9lo7krmfjyjc6yzccft.webp."
+    },
+    {
+      "id": "g0062",
+      "category": "No category",
+      "question": "What information is available about the Arduino IDE portfolio entry dated April 6, 2026?",
+      "variants": {
+        "verbatim": "What information is available about the Arduino IDE portfolio entry dated April 6, 2026?",
+        "partial": "What information available Arduino IDE portfolio",
+        "natural": "Can you tell me What information is available about the Arduino IDE portfolio entry dated April 6, 2026 please?"
+      },
+      "relevant_chunk_ids": [
+        100,
+        101
+      ],
+      "reference_answer": "The entry, identified by ID 117, is titled “Arduino IDE.” It was added to the portfolio on April 6 2026 (event date) and created in the system on the same day at 16:54:30. The thumbnail image for this entry can be viewed at https://res.cloudinary.com/dwnwhonj6/image/upload/v1775494469/portfolio_thumbnails/x3iyywrckkbiajwss5zo.webp. The entry belongs to portfolio type 1."
+    },
+    {
+      "id": "g0063",
+      "category": "No category",
+      "question": "What information is available about the PlatformIO portfolio entry?",
+      "variants": {
+        "verbatim": "What information is available about the PlatformIO portfolio entry?",
+        "partial": "What information available",
+        "natural": "I want to know What information is available about the PlatformIO portfolio entry please?"
+      },
+      "relevant_chunk_ids": [
+        102,
+        103
+      ],
+      "reference_answer": "The entry titled “PlatformIO” was added on April 6 2026 (event date) and was created in the system on the same day at 16:55:46. It is identified by ID 118 and belongs to portfolio type 1. A thumbnail image for this entry can be viewed at https://res.cloudinary.com/dwnwhonj6/image/upload/v1775494546/portfolio_thumbnails/cpmccbenx3a0hfhmjlgx.webp."
+    },
+    {
+      "id": "g0064",
+      "category": "No category",
+      "question": "What details are available for the Raspberry Pi portfolio entry?",
+      "variants": {
+        "verbatim": "What details are available for the Raspberry Pi portfolio entry?",
+        "partial": "What details are available",
+        "natural": "Can you tell me What details are available for the Raspberry Pi portfolio entry please?"
+      },
+      "relevant_chunk_ids": [
+        104,
+        105
+      ],
+      "reference_answer": "The entry titled “Raspberry Pi” was added on April 6 2026 (event date) and was created in the system on the same day at 16:57:03. It is identified by ID 119 and belongs to portfolio type 1. A thumbnail image can be viewed at https://res.cloudinary.com/dwnwhonj6/image/upload/v1775494622/portfolio_thumbnails/wxny8kcodliehpyg1tzv.webp."
+    },
+    {
+      "id": "g0065",
+      "category": "No category",
+      "question": "What details are available for the Next.js portfolio entry created on April 6, 2026?",
+      "variants": {
+        "verbatim": "What details are available for the Next.js portfolio entry created on April 6, 2026?",
+        "partial": "What details are available Next.js portfolio entry",
+        "natural": "I want to know What details are available for the Next.js portfolio entry created on April 6, 2026 anyway?"
+      },
+      "relevant_chunk_ids": [
+        106
+      ],
+      "reference_answer": "The entry (ID 120) is titled “Next.js”, with an event date of 2026‑04‑06. It was created at 16:58:28 on the same day, belongs to portfolio type 1, and its thumbnail can be viewed at https://res.cloudinary.com/dwnwhonj6/image/upload/v1775494708/portfolio_thumbnails/ebo0x85bkvn2fhewwof3.png."
+    },
+    {
+      "id": "g0066",
+      "category": "No category",
+      "question": "What is the TensorFlow portfolio entry dated April 4 2026?",
+      "variants": {
+        "verbatim": "What is the TensorFlow portfolio entry dated April 4 2026?",
+        "partial": "What TensorFlow portfolio entry",
+        "natural": "I want to know the TensorFlow portfolio entry dated April 4 2026 thanks?"
+      },
+      "relevant_chunk_ids": [
+        107
+      ],
+      "reference_answer": "The entry is titled “TensorFlow,” identified by ID 121. It was recorded on April 4 2026, with the record created on April 6 2026 at 16:59:13. The thumbnail image can be viewed at https://res.cloudinary.com/dwnwhonj6/image/upload/v1775494804/portfolio_thumbnails/j9dievqwh4kxh6vyoktw.png, and it belongs to portfolio type 1."
+    },
+    {
+      "id": "g0067",
+      "category": "No category",
+      "question": "What details are available for the Tailwind CSS portfolio entry dated April 6 2026?",
+      "variants": {
+        "verbatim": "What details are available for the Tailwind CSS portfolio entry dated April 6 2026?",
+        "partial": "What details are available Tailwind CSS",
+        "natural": "I was wondering What details are available for the Tailwind CSS portfolio entry dated April 6 2026?"
+      },
+      "relevant_chunk_ids": [
+        108,
+        109
+      ],
+      "reference_answer": "The entry is titled “Tailwind CSS,” was created on 2026‑04‑06 at 17:01:37, and is linked to the event date of 2026‑04‑06. Its thumbnail image can be viewed at https://res.cloudinary.com/dwnwhonj6/image/upload/v1775494896/portfolio_thumbnails/zfw3aofdjsyxid1wlvka.png, and it is categorized under portfolio type ID 1."
+    },
+    {
+      "id": "g0068",
+      "category": "No category",
+      "question": "What details are available for the MQTT portfolio entry dated April 6, 2026?",
+      "variants": {
+        "verbatim": "What details are available for the MQTT portfolio entry dated April 6, 2026?",
+        "partial": "What details are available MQTT portfolio",
+        "natural": "Can you tell me What details are available for the MQTT portfolio entry dated April 6, 2026 thanks?"
+      },
+      "relevant_chunk_ids": [
+        110,
+        111
+      ],
+      "reference_answer": "The entry has ID 123, titled “MQTT”. It was recorded on April 6, 2026 (event date) and created on the same day at 17:03:22. The thumbnail image can be viewed at https://res.cloudinary.com/dwnwhonj6/image/upload/v1775495002/portfolio_thumbnails/o3eshswp07wqwsadzknl.webp, and it belongs to portfolio type 1."
+    },
+    {
+      "id": "g0069",
+      "category": "No category",
+      "question": "What is the Air Monitor Pro IoT Mini project and what does it include?",
+      "variants": {
+        "verbatim": "What is the Air Monitor Pro IoT Mini project and what does it include?",
+        "partial": "What Air Monitor Pro IoT Mini",
+        "natural": "the Air Monitor Pro IoT Mini project and what does it include thanks?"
+      },
+      "relevant_chunk_ids": [
+        112,
+        113,
+        114
+      ],
+      "reference_answer": "Air Monitor Pro is a smart industrial environmental guard that provides real‑time monitoring of air quality, safety thresholds, and early fire detection in warehouses, labs, and other industrial spaces. The system combines a rugged, wall‑mountable ESP32‑based hardware enclosure with a cloud‑based Next.js dashboard. It senses PM2.5 dust, CO₂/Smoke gases, temperature and humidity (4‑in‑1), logs alerts in MongoDB, and sends notifications via MQTT with OTA configuration for sensor thresholds. Local visual and audio alarms (LED and buzzer) are shown on a 16×2 I2C LCD, and the dashboard offers dark/light modes and 7‑day historical analytics. The hardware uses an ESP32 microcontroller, DHT22 sensor, Sharp GP2Y1010AU0F PM2.5 sensor, MQ‑Series gas sensor, and a 16×2 LCD. The project was presented at RMUTT on March 14 2026, and you can view it at https://airmonitorpro.netlify.app/ or explore the source code on GitHub at https://github.com/Automatic28m/air_monitor_iot."
+    },
+    {
+      "id": "g0070",
+      "category": "No category",
+      "question": "What is the Thaivel tourism website project and what are its main features and technologies?",
+      "variants": {
+        "verbatim": "What is the Thaivel tourism website project and what are its main features and technologies?",
+        "partial": "What Thaivel tourism website project are",
+        "natural": "the Thaivel tourism website project and what are its main features and technologies?"
+      },
+      "relevant_chunk_ids": [
+        115,
+        116,
+        117
+      ],
+      "reference_answer": "Thaivel is a sophisticated full‑stack travel platform created as a showcase for the International Web Design Contest (iWDC). It serves as a curated gateway to Thailand’s attractions, organizing destinations by the country’s six regions and allowing users to filter by categories such as cafes, nature spots, restaurants, street food, temples and urban sites. Key features include a regional exploration guide, a smart categorization engine, the “Tuktuk Driver AI” conversational travel assistant, dark‑themed interactive maps with custom pins, a mobile‑first responsive design, and social‑media and Google Maps integration for each location. The site was built with Next.js (React) on the front end, styled with Tailwind CSS, and uses MySQL for the destination database. It was presented at RMUTT on 7 April 2026 and the source code is available at https://github.com/Automatic28m/thaivel."
+    }
+  ]
+}

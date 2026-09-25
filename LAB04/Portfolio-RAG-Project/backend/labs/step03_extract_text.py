@@ -1,0 +1,39 @@
+"""
+LAB 1: Read the original data file (data/sex_q_a.txt) and 
+extract question-answer pairs. Save the results to outputs/extracted_text.json
+
+Compile: python labs/lab01_extract_text.py
+"""
+
+import json
+import os
+import sys
+
+# Add the project root ahead of other entries so local imports win when run directly.
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from config import config
+from src.document_loader import load_qa_file
+
+
+def main():
+    print("=== Lab 1: Extract Text ===")
+    print(f"Reading file: {config.SOURCE_FILE}")
+
+    records = load_qa_file(config.SOURCE_FILE)
+    print(f"Found a total of {len(records)} question-answer pairs")
+
+    with open(config.EXTRACTED_TEXT_FILE, "w", encoding="utf-8") as f:
+        json.dump(records, f, ensure_ascii=False, indent=2)
+
+    print(f"Results saved to: {config.EXTRACTED_TEXT_FILE}")
+
+    # Display sample of the first 2 items to verify correct reading
+    print("\nSample data read:")
+    for record in records[:2]:
+        print(f"  - [{record['category']}] Q: {record['question'][:50]}...")
+
+
+if __name__ == "__main__":
+    main()
+
