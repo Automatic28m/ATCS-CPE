@@ -3,10 +3,11 @@
 import { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import Image from "next/image";
 
 export default function Chat() {
   const [messages, setMessages] = useState([
-    { role: "assistant", content: "👋 Hello! This is Phanlop Boonluea. If you have any doubt in me, feel free to ask!" }
+    { role: "assistant", content: "👋 Hello! I am Phanlop Boonluea. I'm excited to share my portfolio and experience with you. Feel free to ask me anything!" }
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -62,27 +63,36 @@ export default function Chat() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-gray-50 dark:bg-gray-900 font-sans">
-      <header className="bg-white dark:bg-gray-800 shadow-sm p-4 flex justify-center sticky top-0 z-10">
-        <h1 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
-          Phanlop's Portfolio AI
+    <div className="flex flex-col h-screen bg-[var(--color-brand-light)] font-sans">
+      <header className="bg-[var(--color-brand-darkred)] shadow-md p-4 flex items-center justify-center sticky top-0 z-10 gap-3">
+        <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-[var(--color-brand-beige)]">
+          <Image src="/avatar.png" alt="Phanlop Avatar" fill className="object-cover" />
+        </div>
+        <h1 className="text-xl font-bold text-[var(--color-brand-light)]">
+          Phanlop Boonluea
         </h1>
       </header>
 
       <main className="flex-1 overflow-y-auto p-4 w-full">
-        <div className="max-w-3xl mx-auto flex flex-col gap-4 pb-4">
+        <div className="max-w-3xl mx-auto flex flex-col gap-5 pb-4 mt-4">
           {messages.map((msg, idx) => (
             <div
               key={idx}
-              className={`flex ${
+              className={`flex w-full ${
                 msg.role === "user" ? "justify-end" : "justify-start"
               }`}
             >
+              {msg.role === "assistant" && (
+                <div className="relative w-12 h-16 shrink-0 mr-2 mt-0">
+                  <Image src="/avatar.png" alt="AI Avatar" fill className="object-contain object-top drop-shadow-sm" />
+                </div>
+              )}
+              
               <div
-                className={`max-w-[85%] rounded-2xl px-5 py-3 shadow-sm ${
+                className={`max-w-[80%] rounded-2xl px-5 py-4 shadow-sm ${
                   msg.role === "user"
-                    ? "bg-blue-600 text-white rounded-br-sm"
-                    : "bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 rounded-bl-sm prose prose-sm max-w-none dark:prose-invert prose-p:leading-relaxed prose-pre:bg-gray-100 dark:prose-pre:bg-gray-900 prose-a:text-blue-600 dark:prose-a:text-blue-400"
+                    ? "bg-[var(--color-brand-rose)] text-[var(--color-brand-light)] rounded-br-sm"
+                    : "bg-[var(--color-brand-beige)] text-[var(--color-brand-darkred)] rounded-bl-sm prose prose-sm max-w-none prose-p:leading-relaxed prose-a:text-[var(--color-brand-darkred)] prose-a:underline prose-strong:text-[var(--color-brand-darkred)] prose-ul:text-[var(--color-brand-darkred)] prose-ol:text-[var(--color-brand-darkred)]"
                 }`}
               >
                 {msg.role === "user" ? (
@@ -96,11 +106,14 @@ export default function Chat() {
             </div>
           ))}
           {isLoading && (
-            <div className="flex justify-start">
-              <div className="rounded-2xl px-5 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 rounded-bl-sm shadow-sm flex space-x-2 items-center h-12">
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-75"></div>
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-150"></div>
+            <div className="flex justify-start w-full">
+              <div className="relative w-12 h-16 shrink-0 mr-2 mt-0">
+                <Image src="/avatar.png" alt="AI Avatar" fill className="object-contain object-top drop-shadow-sm" />
+              </div>
+              <div className="rounded-2xl px-5 py-4 bg-[var(--color-brand-beige)] rounded-bl-sm shadow-sm flex space-x-2 items-center h-12">
+                <div className="w-2 h-2 bg-[var(--color-brand-darkred)] rounded-full animate-bounce"></div>
+                <div className="w-2 h-2 bg-[var(--color-brand-darkred)] rounded-full animate-bounce delay-75"></div>
+                <div className="w-2 h-2 bg-[var(--color-brand-darkred)] rounded-full animate-bounce delay-150"></div>
               </div>
             </div>
           )}
@@ -108,7 +121,7 @@ export default function Chat() {
         </div>
       </main>
 
-      <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 p-4">
+      <footer className="bg-white border-t border-[var(--color-brand-beige)] p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
         <form
           onSubmit={sendMessage}
           className="max-w-3xl mx-auto flex gap-3 items-center relative"
@@ -117,14 +130,14 @@ export default function Chat() {
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask about my skills, experience, etc..."
-            className="flex-1 p-3 pl-4 pr-12 border border-gray-300 dark:border-gray-600 rounded-full bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow"
+            placeholder="Ask me anything..."
+            className="flex-1 p-3 pl-5 pr-14 border border-[var(--color-brand-beige)] rounded-full bg-[var(--color-brand-light)] text-[var(--color-brand-darkred)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-rose)] transition-all placeholder:text-[var(--color-brand-darkred)]/50"
             disabled={isLoading}
           />
           <button
             type="submit"
             disabled={isLoading || !input.trim()}
-            className="absolute right-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full p-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+            className="absolute right-2 bg-[var(--color-brand-darkred)] hover:bg-[var(--color-brand-rose)] text-[var(--color-brand-light)] rounded-full p-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center shadow-sm"
             aria-label="Send message"
           >
             <svg
