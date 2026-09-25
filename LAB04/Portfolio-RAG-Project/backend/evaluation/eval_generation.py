@@ -82,7 +82,7 @@ def evaluate_one_item(rag, item):
         "faithfulness": round(word_overlap(answer, context), 4),
         "correctness": round(word_overlap(answer, item["reference_answer"]), 4),
         "relevance": round(word_overlap(query, answer), 4),
-        "seconds": result["timings"]["รวม"],
+        "seconds": result["timings"]["total"],
     }
 
 
