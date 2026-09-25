@@ -7,6 +7,10 @@
 }
 
 @theme inline {
+  --color-brand-darkred: #800020;
+  --color-brand-beige: #F3E6D5;
+  --color-brand-light: #FFF9F2;
+  --color-brand-rose: #D45060;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
