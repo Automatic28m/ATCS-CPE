@@ -1,0 +1,30 @@
+# Python Virtual Environment
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# macOS System Files
+.DS_Store
+
+# Python Packaging
+*.egg
+*.egg-info/
+dist/
+build/
+portfolio_rag_project.egg-info/
+
+# RAG System Auto-Generated Data
+# Do not commit the vector databases or intermediate outputs as they are large 
+# and can be perfectly recreated by running `build_index.py`
+outputs/
+vector_db/
+
+# API Keys & Secrets
+.env
+
+# Note: The `data/` folder is NOT ignored, because the source text (portfolio_qa_en.txt) 
+# needs to be committed so that the index can be built by anyone cloning the project.
