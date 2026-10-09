@@ -11,6 +11,75 @@ This project is a complete full-stack Retrieval-Augmented Generation (RAG) syste
 
 ---
 
+## 🔧 7 Solved RAG Pipeline Problems & Fixes
+
+During the development of this system, we encountered and solved 7 advanced RAG challenges:
+
+### 1. Data Quality (Missing Deduplication)
+**Problem:** The raw dataset contained overlapping or identical Q&A pairs, causing redundant information to flood the top retrieved results.
+**Solution:** Added a Cosine Similarity check before building the FAISS index to automatically drop chunks that are 98% identical to existing ones.
+```python
+# build_index.py snippet
+sims = cosine_similarity([new_embedding], unique_embeddings)[0]
+if max(sims) <= 0.98:
+    unique_embeddings.append(new_embedding)
+```
+
+### 2. Metadata Filtering Gap
+**Problem:** The vector search blindly searched the entire database, completely ignoring the category metadata attached to the chunks.
+**Solution:** Implemented Self-Querying logic in `rag_pipeline.py` to extract categories, and updated `hybrid_retriever.py` to apply the filter post-retrieval.
+```python
+# hybrid_retriever.py snippet
+if filter_category and filter_category.lower() not in chunk.get("category", "").lower():
+    continue # Skip non-matching chunks
+```
+
+### 3. Technical Keyword Destruction (BM25)
+**Problem:** The English tokenizer aggressively stripped special characters, breaking crucial searches for "C++", "C#", and "React.js".
+**Solution:** Upgraded the BM25 regular expression to mathematically preserve symbols like `+` and `#`.
+```python
+# hybrid_retriever.py snippet
+ENGLISH_PATTERN = re.compile(r"[A-Za-z0-9\+#\.]+") 
+```
+
+### 4. HyDE Factual Drift
+**Problem:** Hypothetical Document Embeddings (HyDE) hallucinated fake facts (e.g., fake TOEIC scores) to help semantic search, which distorted factual lookups.
+**Solution:** Built a heuristic detector to bypass HyDE for factual queries (scores, dates, grades), routing them to a standard rewriter instead.
+```python
+# query_transform.py snippet
+if self.is_factual_query(query):
+    return self.rewrite(query, history) # Bypass HyDE to prevent drift
+return self.hyde(query)
+```
+
+### 5. Temporal Blindness
+**Problem:** FAISS purely relies on semantic similarity and had no concept of time, failing on queries for "the most recent" projects.
+**Solution:** Implemented regex to extract years from text chunks and applied a mathematical scalar boost to the Reciprocal Rank Fusion (RRF) score for newer dates.
+```python
+# hybrid_retriever.py snippet
+if "recent" in query.lower():
+    years = re.findall(r"\b(20\d{2})\b", chunk["text"])
+    if years:
+        recency_boost = max(0.0, 0.5 - ((current_year - max(int(y) for y in years)) * 0.1)) 
+        chunk["score"] += recency_boost
+```
+
+### 6. Aggressive Metadata Over-Filtering
+**Problem:** Simple intent triggers caused category collisions. E.g., asking "Do you have experience in Next.js?" triggered the `Experience` filter, completely blocking `Web Application` chunks.
+**Solution:** Dropped broad single-word matches (like "experience") and upgraded the pipeline to require strict compound phrases ("work experience", "internship").
+
+### 7. Chunk Boundary URL Destruction
+**Problem:** The text splitter sliced chunks exactly at 400 characters. If the 400th character landed in the middle of a URL (e.g., "https:/"), the URL was destroyed.
+**Solution:** Upgraded the text splitter to scan backwards from the 400th character to find the closest space character, guaranteeing chunks only break on whole words.
+```python
+# text_splitter.py snippet
+last_space = text.rfind(' ', start, start + chunk_size)
+if last_space != -1:
+    end = last_space # Safely break at the space instead of cutting the URL
+```
+
+---
+
 ## 🛠️ Part 1: Backend Setup & Execution
 
 ### 1. Activate the Virtual Environment
