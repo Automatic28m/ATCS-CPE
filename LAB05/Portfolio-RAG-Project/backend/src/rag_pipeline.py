@@ -41,12 +41,25 @@ class RAGPipeline:
         
         time_after_transform = time.time()
 
+        # ── METADATA EXTRACTION ─────────────────────────────────────────────
+        filter_category = None
+        lower_query = standalone_query.lower()
+        if "education" in lower_query or "university" in lower_query or "school" in lower_query:
+            filter_category = "Education"
+        elif "certificate" in lower_query or "certification" in lower_query:
+            filter_category = "Certificate"
+        elif "internship" in lower_query or "work experience" in lower_query or "employment" in lower_query:
+            filter_category = "Experience"
+        elif "award" in lower_query or "competition" in lower_query or "winner" in lower_query:
+            filter_category = "Award"
+
         # ── RAG RETRIEVAL ───────────────────────────────────────────────────
-        print(f"[Pipeline] Activating RAG retrieval.")
+        print(f"[Pipeline] Activating RAG retrieval. (Category Filter: {filter_category})")
         chunks = self.retriever.retrieve(
             standalone_query,
             top_k=config.TOP_K,
             extra_queries=queries[1:] if len(queries) > 1 else None,
+            filter_category=filter_category
         )
         time_after_retrieve = time.time()
 

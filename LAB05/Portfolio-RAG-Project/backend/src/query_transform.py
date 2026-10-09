@@ -92,15 +92,22 @@ class QueryTransformer:
         fake_answer = self.ask_llm(HYDE_PROMPT.format(question=query)).strip()
         return [normalize_query(query), fake_answer]
 
+    def is_factual_query(self, query):
+        factual_keywords = ["score", "gpa", "date", "when", "how much", "how many", "grade", "toeic"]
+        return any(keyword in query.lower() for keyword in factual_keywords)
+
     def transform(self, query, history=""):
         if not config.USE_QUERY_TRANSFORM:
             return [normalize_query(query)]
 
         try:
+            if config.QUERY_TRANSFORM_MODE == "hyde":
+                if self.is_factual_query(query):
+                    print(f"[Query Transform] Factual query detected. Bypassing HyDE.")
+                    return self.rewrite(query, history)
+                return self.hyde(query)
             if config.QUERY_TRANSFORM_MODE == "rewrite":
                 return self.rewrite(query, history)
-            if config.QUERY_TRANSFORM_MODE == "hyde":
-                return self.hyde(query)
             return self.multi_query(query)
         except Exception as error:
             print(f"[query_transform] Failed ({error}) — Using original query")

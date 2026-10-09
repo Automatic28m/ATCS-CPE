@@ -22,10 +22,19 @@ def split_text(text, chunk_size, overlap):
     chunks = []
     start = 0
     while start < len(text):
-        chunks.append(text[start:start + chunk_size])
-        if start + chunk_size >= len(text):
+        end = start + chunk_size
+        
+        if end < len(text):
+            # Find the last space before the chunk boundary to prevent cutting URLs in half
+            last_space = text.rfind(' ', start, end)
+            if last_space != -1 and last_space > start + (chunk_size // 2):
+                end = last_space
+                
+        chunks.append(text[start:end].strip())
+        if end >= len(text):
             break
-        start += chunk_size - overlap
+            
+        start = end - overlap
     return chunks
 
 

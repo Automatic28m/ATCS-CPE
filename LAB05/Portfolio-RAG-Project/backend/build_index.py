@@ -9,6 +9,7 @@ import json
 import time
 
 import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
 
 from config import config
 from src import index_meta
@@ -18,6 +19,29 @@ from src.hybrid_retriever import build_bm25, save_bm25
 from src.text_splitter import build_chunks
 from src.vector_store import VectorStore, save_chunk_store
 
+
+
+def deduplicate_chunks(chunks, embeddings, threshold=0.98):
+    print("Deduplicating chunks...")
+    unique_chunks = []
+    unique_embeddings = []
+    
+    for i, emb in enumerate(embeddings):
+        is_duplicate = False
+        if unique_embeddings:
+            sims = cosine_similarity([emb], unique_embeddings)[0]
+            if max(sims) > threshold:
+                is_duplicate = True
+                
+        if not is_duplicate:
+            unique_chunks.append(chunks[i])
+            unique_embeddings.append(emb)
+            
+    for idx, chunk in enumerate(unique_chunks):
+        chunk["chunk_id"] = idx
+        
+    print(f"Removed {len(chunks) - len(unique_chunks)} duplicate chunks.")
+    return unique_chunks, np.array(unique_embeddings)
 
 
 def main():
@@ -53,6 +77,8 @@ def main():
     # Step 3: Generate embedding vectors (slowest step)
     texts = [chunk["text"] for chunk in chunks]
     embeddings = EmbeddingModel().encode(texts)
+    
+    chunks, embeddings = deduplicate_chunks(chunks, embeddings)
     np.save(config.EMBEDDINGS_FILE, embeddings)
     #print(f"[3/5] Generated {embeddings.shape[0]} vectors × {embeddings.shape[1]} dimensions")
 

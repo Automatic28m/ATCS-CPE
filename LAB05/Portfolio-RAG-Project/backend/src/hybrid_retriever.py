@@ -11,6 +11,7 @@
 import os
 import pickle
 import re
+from datetime import datetime
 
 from rank_bm25 import BM25Okapi
 
@@ -25,7 +26,7 @@ from src.vector_store import VectorStore, load_chunk_store
 # This enables accurate keyword matching.
 
 THAI_PATTERN = re.compile(r"[ก-๙]+")            # ตัวอักษรไทยติดกัน
-ENGLISH_PATTERN = re.compile(r"[A-Za-z0-9]+")   # คำอังกฤษหรือตัวเลข
+ENGLISH_PATTERN = re.compile(r"[A-Za-z0-9\+#\.]+")   # คำอังกฤษหรือตัวเลข
 
 
 def tokenize(text):
@@ -146,7 +147,7 @@ class HybridRetriever:
 # Each query is searched separately.
 # The results are combined using Reciprocal Rank Fusion (RRF).
 
-    def retrieve(self, query, top_k=config.TOP_K, extra_queries=None):
+    def retrieve(self, query, top_k=config.TOP_K, extra_queries=None, filter_category=None):
 
         queries = [query] + list(extra_queries or [])
 
@@ -171,14 +172,36 @@ class HybridRetriever:
         # ถ้าจะ rerank ต่อ ต้องส่งผู้เข้ารอบให้มันมากกว่า top_k
         keep = config.CANDIDATE_K if self.reranker else top_k
 
-        # แปลงตำแหน่งกลับเป็นเนื้อหา
+        # แปลงตำแหน่งกลับเป็นเนื้อหา พร้อม Metadata Filter
         results = []
-        for position, score in fused[:keep]:
+        for position, score in fused:
             chunk = dict(self.chunks[position])
+            
+            if filter_category:
+                if filter_category.lower() not in chunk.get("category", "").lower():
+                    continue
+                    
             chunk["score"] = score
             chunk["dense_score"] = dense_scores.get(position)
             chunk["bm25_score"] = bm25_scores.get(position)
             results.append(chunk)
+            
+            if len(results) >= keep:
+                break
+
+        # Temporal Recency Boost
+        is_recency_query = "recent" in query.lower() or "latest" in query.lower() or "current" in query.lower()
+        if is_recency_query:
+            current_year = datetime.now().year
+            for chunk in results:
+                years = re.findall(r"\b(20\d{2})\b", chunk["text"])
+                if years:
+                    latest_year = max(int(y) for y in years)
+                    year_diff = current_year - latest_year
+                    recency_boost = max(0.0, 0.5 - (year_diff * 0.1))
+                    chunk["score"] += recency_boost
+            
+            results.sort(key=lambda x: x["score"], reverse=True)
 
         #  จัดอันดับใหม่
         if self.reranker:

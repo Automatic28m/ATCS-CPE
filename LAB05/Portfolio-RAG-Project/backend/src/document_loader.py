@@ -28,8 +28,8 @@ def load_qa_file(file_path):
         if not line or line.startswith("#"):
             continue
 
-        if line.startswith("[หมวด"):
-            category = line.strip("[]").replace("หมวด:", "").strip()
+        if line.startswith("[หมวด") or line.startswith("[Category:"):
+            category = line.strip("[]").replace("หมวด:", "").replace("Category:", "").strip()
         elif line.startswith("Q:"):
             question = line[2:].strip()
             question_line = line_no
